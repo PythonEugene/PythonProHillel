@@ -1,0 +1,4 @@
+Teddy Bear, Soft toy, 1000, 100
+Star Wars, Lego, 2000, 100
+Shark, Soft toy, 500, 100
+Disney, Lego, 1500, 100
