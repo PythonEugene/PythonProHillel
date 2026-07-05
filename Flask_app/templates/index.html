@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To Do List</title>
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">To Do List</h1>
+            <a href="{{ url_for('app.add_tasks') }}" class="btn btn-primary mb-3">Add Task</a>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dissmissible fade show" role="alert">
+                            {{ message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr class="{% if task.is_completed %}table-light text-muted{% endif %}">
+
+                        <td>
+                            {% if task.is_completed %}
+                                <del>{{ task.title }}</del>
+                            {% else %}
+                                {{ task.title }}
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if task.is_completed %}
+                                <del>{{ task.description }}</del>
+                            {% else %}
+                                {{ task.description }}
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if task.is_completed %}
+                                <del>{{ task.date }}</del>
+                            {% else %}
+                                {{ task.date }}
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if not task.is_completed %}
+                                <a href="{{ url_for('app.complete_task', task_id=task.id) }}" class="btn btn-success btn-sm me-1">Done</a>
+                            {% endif %}
+
+                            <form action="{{ url_for('app.delete_task', task_id=task.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+
+                        <td>
+                            {% if task.is_completed %}
+                                <span class="badge bg-success">Completed</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">In progress</span>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <script src="https://cdn.jsdelivr.org/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
+
+
