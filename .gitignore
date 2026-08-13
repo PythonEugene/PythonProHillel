@@ -9,3 +9,8 @@
 **/*.sqlite3
 
 **/.idea/
+
+FastAPI/
+MySQL/
+parent/
+home_works/
