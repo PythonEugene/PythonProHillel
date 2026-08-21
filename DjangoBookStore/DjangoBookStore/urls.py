@@ -16,8 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.http import HttpResponse
+from django.conf.urls.static import static
+from django.conf import settings
+
+
+def test(request):
+    return HttpResponse("OK")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('test/', test, name='test'),
     path('books/', include('books.urls')),
+    path('users/', include('users.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]

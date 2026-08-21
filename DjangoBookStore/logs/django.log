@@ -1,0 +1,64 @@
+INFO 2026-08-21 16:12:23,350 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 16:12:28,304 log "GET /users/login/ HTTP/1.1" 200 17163
+INFO 2026-08-21 16:12:28,331 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:12:28,331 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:12:28,358 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:12:28,359 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:12:30,593 log "POST /users/login/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:12:30,621 log "GET /books/ HTTP/1.1" 200 20323
+INFO 2026-08-21 16:12:32,992 log "GET /books/add/ HTTP/1.1" 200 17837
+INFO 2026-08-21 16:12:52,997 views Book created: 1984
+INFO 2026-08-21 16:12:53,012 log "POST /books/add/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:12:53,035 log "GET /books/ HTTP/1.1" 200 21302
+INFO 2026-08-21 16:21:10,604 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\DjangoBookStore\settings.py changed, reloading.
+INFO 2026-08-21 16:21:11,285 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 16:21:16,879 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 16:23:11,507 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\DjangoBookStore\settings.py changed, reloading.
+INFO 2026-08-21 16:23:12,077 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 16:23:39,446 middleware GET /books/1/ - 200 - 0.206 seconds
+INFO 2026-08-21 16:23:39,465 log "GET /books/1/ HTTP/1.1" 200 17034
+INFO 2026-08-21 16:23:39,485 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:23:39,491 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:23:39,485 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:23:39,500 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:23:45,199 middleware GET /books/4/edit/ - 200 - 0.022 seconds
+INFO 2026-08-21 16:23:45,211 log "GET /books/4/edit/ HTTP/1.1" 200 17926
+INFO 2026-08-21 16:24:25,263 middleware GET /books/ - 200 - 0.013 seconds
+INFO 2026-08-21 16:24:25,277 log "GET /books/ HTTP/1.1" 200 21302
+INFO 2026-08-21 16:24:26,886 middleware GET / - 404 - 0.004 seconds
+WARNING 2026-08-21 16:24:26,904 log Not Found: /
+WARNING 2026-08-21 16:24:26,905 log "GET / HTTP/1.1" 404 17729
+INFO 2026-08-21 16:24:29,308 middleware GET /admin/ - 200 - 0.033 seconds
+INFO 2026-08-21 16:24:29,324 log "GET /admin/ HTTP/1.1" 200 28382
+INFO 2026-08-21 16:24:37,420 middleware GET /admin/users/customuser/ - 200 - 0.035 seconds
+INFO 2026-08-21 16:24:37,445 log "GET /admin/users/customuser/ HTTP/1.1" 200 27366
+INFO 2026-08-21 16:24:37,471 middleware GET /admin/jsi18n/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:24:37,481 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:25:03,322 middleware GET /admin/ - 200 - 0.013 seconds
+INFO 2026-08-21 16:25:03,346 log "GET /admin/ HTTP/1.1" 200 28382
+INFO 2026-08-21 16:25:08,200 middleware GET /books/ - 200 - 0.007 seconds
+INFO 2026-08-21 16:25:08,214 log "GET /books/ HTTP/1.1" 200 21302
+INFO 2026-08-21 16:25:10,784 middleware GET /books/ - 200 - 0.010 seconds
+INFO 2026-08-21 16:25:10,800 log "GET /books/ HTTP/1.1" 200 21302
+INFO 2026-08-21 16:25:14,377 middleware POST /users/logout/ - 302 - 0.017 seconds
+INFO 2026-08-21 16:25:14,389 log "POST /users/logout/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:25:14,399 middleware GET /books/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:25:14,411 log "GET /books/ HTTP/1.1" 200 21064
+INFO 2026-08-21 16:25:15,939 middleware GET /users/login/ - 200 - 0.005 seconds
+INFO 2026-08-21 16:25:15,949 log "GET /users/login/ HTTP/1.1" 200 16926
+INFO 2026-08-21 16:25:21,331 middleware POST /users/login/ - 302 - 0.524 seconds
+INFO 2026-08-21 16:25:21,343 log "POST /users/login/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:25:21,354 middleware GET /books/ - 200 - 0.008 seconds
+INFO 2026-08-21 16:25:21,365 log "GET /books/ HTTP/1.1" 200 21308
+INFO 2026-08-21 16:25:23,130 middleware GET /books/1/ - 200 - 0.008 seconds
+INFO 2026-08-21 16:25:23,146 log "GET /books/1/ HTTP/1.1" 200 17039
+INFO 2026-08-21 16:25:25,464 middleware GET /books/ - 200 - 0.009 seconds
+INFO 2026-08-21 16:25:25,480 log "GET /books/ HTTP/1.1" 200 21308
+INFO 2026-08-21 16:25:26,599 middleware GET /books/1/ - 200 - 0.007 seconds
+INFO 2026-08-21 16:25:26,614 log "GET /books/1/ HTTP/1.1" 200 17039
+INFO 2026-08-21 16:25:28,448 middleware GET /books/1/edit/ - 200 - 0.014 seconds
+INFO 2026-08-21 16:25:28,465 log "GET /books/1/edit/ HTTP/1.1" 200 17923
+INFO 2026-08-21 16:25:35,031 middleware POST /books/1/edit/ - 302 - 0.013 seconds
+INFO 2026-08-21 16:25:35,045 log "POST /books/1/edit/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:25:35,055 middleware GET /books/ - 200 - 0.007 seconds
+INFO 2026-08-21 16:25:35,067 log "GET /books/ HTTP/1.1" 200 21308

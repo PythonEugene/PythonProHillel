@@ -1,0 +1,21 @@
+{% extends 'books/base.html' %}
+
+{% block title %}Вхід{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Вхід</h1>
+
+{% if form.errors %}
+    <div class="alert alert-danger">
+        Невірний номер телефону або пароль.
+    </div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Увійти</button>
+</form>
+
+<p class="mt-3">Немає акаунту? <a href="{% url 'users:register' %}">Зареєструватися</a></p>
+{% endblock %}

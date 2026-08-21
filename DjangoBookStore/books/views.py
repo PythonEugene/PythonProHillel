@@ -2,6 +2,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from categories.models import Category
 from .models import Book
+import logging
+
+logger = logging.getLogger('books')
 
 
 class BookListView(ListView):
@@ -40,6 +43,11 @@ class BookCreateView(CreateView):
     template_name = 'books/book_form.html'
     fields = ['title', 'author', 'price', 'description', 'category', 'stock']
     success_url = reverse_lazy('books:list')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        logger.info(f'Book created: {self.object.title}')
+        return response
 
 
 class BookUpdateView(UpdateView):
