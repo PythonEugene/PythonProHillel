@@ -62,3 +62,476 @@ INFO 2026-08-21 16:25:35,031 middleware POST /books/1/edit/ - 302 - 0.013 second
 INFO 2026-08-21 16:25:35,045 log "POST /books/1/edit/ HTTP/1.1" 302 0
 INFO 2026-08-21 16:25:35,055 middleware GET /books/ - 200 - 0.007 seconds
 INFO 2026-08-21 16:25:35,067 log "GET /books/ HTTP/1.1" 200 21308
+INFO 2026-08-21 16:35:44,628 middleware GET /books/add/ - 200 - 0.010 seconds
+INFO 2026-08-21 16:35:44,643 log "GET /books/add/ HTTP/1.1" 200 17843
+INFO 2026-08-21 16:35:44,662 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:35:44,662 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:35:44,673 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:35:44,673 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:37:07,516 views Book created: Python for Programists
+INFO 2026-08-21 16:37:07,516 middleware POST /books/add/ - 302 - 0.011 seconds
+INFO 2026-08-21 16:37:07,527 log "POST /books/add/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:37:07,538 middleware GET /books/ - 200 - 0.008 seconds
+INFO 2026-08-21 16:37:07,554 log "GET /books/ HTTP/1.1" 200 22309
+WARNING 2026-08-21 16:38:00,308 log Forbidden (CSRF token from POST incorrect.): /users/manage/2/
+INFO 2026-08-21 16:38:00,309 middleware POST /users/manage/2/ - 403 - 0.002 seconds
+WARNING 2026-08-21 16:38:00,322 log "POST /users/manage/2/ HTTP/1.1" 403 17480
+INFO 2026-08-21 16:38:14,130 middleware GET /users/manage/1/ - 200 - 0.053 seconds
+INFO 2026-08-21 16:38:14,142 log "GET /users/manage/1/ HTTP/1.1" 200 22104
+INFO 2026-08-21 16:38:34,037 middleware GET /users/manage/2/ - 200 - 0.038 seconds
+INFO 2026-08-21 16:38:34,050 log "GET /users/manage/2/ HTTP/1.1" 200 22118
+INFO 2026-08-21 16:39:00,549 middleware GET /admin/ - 200 - 0.017 seconds
+INFO 2026-08-21 16:39:00,567 log "GET /admin/ HTTP/1.1" 200 25888
+INFO 2026-08-21 16:39:09,222 middleware GET /admin/users/customuser/ - 200 - 0.021 seconds
+INFO 2026-08-21 16:39:09,242 log "GET /admin/users/customuser/ HTTP/1.1" 200 27366
+INFO 2026-08-21 16:39:09,266 middleware GET /admin/jsi18n/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:39:09,277 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:39:10,967 middleware GET /admin/users/customuser/2/change/ - 200 - 0.096 seconds
+INFO 2026-08-21 16:39:10,989 log "GET /admin/users/customuser/2/change/ HTTP/1.1" 200 41659
+INFO 2026-08-21 16:39:11,013 middleware GET /admin/jsi18n/ - 200 - 0.004 seconds
+INFO 2026-08-21 16:39:11,023 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:41:35,023 middleware POST /admin/users/customuser/2/change/ - 302 - 0.076 seconds
+INFO 2026-08-21 16:41:35,034 log "POST /admin/users/customuser/2/change/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:41:35,055 middleware GET /admin/users/customuser/ - 200 - 0.018 seconds
+INFO 2026-08-21 16:41:35,078 log "GET /admin/users/customuser/ HTTP/1.1" 200 27581
+INFO 2026-08-21 16:41:35,101 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:41:35,102 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:41:35,105 middleware GET /admin/jsi18n/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:41:35,118 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:41:35,126 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:41:35,132 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:41:37,345 middleware GET /admin/users/customuser/2/change/ - 200 - 0.073 seconds
+INFO 2026-08-21 16:41:37,373 log "GET /admin/users/customuser/2/change/ HTTP/1.1" 200 41658
+INFO 2026-08-21 16:41:37,396 middleware GET /admin/jsi18n/ - 200 - 0.004 seconds
+INFO 2026-08-21 16:41:37,407 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:42:15,816 middleware GET /admin/auth/group/add/ - 200 - 0.032 seconds
+INFO 2026-08-21 16:42:15,832 log "GET /admin/auth/group/add/?_to_field=id&_popup=1 HTTP/1.1" 200 23561
+INFO 2026-08-21 16:42:15,850 middleware GET /admin/jsi18n/ - 200 - 0.005 seconds
+INFO 2026-08-21 16:42:15,867 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:42:34,969 middleware POST /admin/auth/group/add/ - 200 - 0.031 seconds
+INFO 2026-08-21 16:42:34,980 log "POST /admin/auth/group/add/?_to_field=id&_popup=1 HTTP/1.1" 200 15367
+INFO 2026-08-21 16:42:41,338 middleware POST /admin/users/customuser/2/change/ - 302 - 0.029 seconds
+INFO 2026-08-21 16:42:41,348 log "POST /admin/users/customuser/2/change/ HTTP/1.1" 302 0
+WARNING 2026-08-21 16:42:41,359 log Forbidden (Permission denied): /admin/users/customuser/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\options.py", line 710, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1979, in changelist_view
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+INFO 2026-08-21 16:42:41,362 middleware GET /admin/users/customuser/ - 403 - 0.010 seconds
+WARNING 2026-08-21 16:42:41,375 log "GET /admin/users/customuser/ HTTP/1.1" 403 15107
+WARNING 2026-08-21 16:42:45,178 log Forbidden (Permission denied): /admin/users/customuser/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\options.py", line 710, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1979, in changelist_view
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+INFO 2026-08-21 16:42:45,180 middleware GET /admin/users/customuser/ - 403 - 0.008 seconds
+WARNING 2026-08-21 16:42:45,194 log "GET /admin/users/customuser/ HTTP/1.1" 403 15107
+WARNING 2026-08-21 16:42:50,685 log Forbidden (Permission denied): /admin/users/customuser/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\options.py", line 710, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\contrib\admin\options.py", line 1979, in changelist_view
+    raise PermissionDenied
+django.core.exceptions.PermissionDenied
+INFO 2026-08-21 16:42:50,687 middleware GET /admin/users/customuser/ - 403 - 0.009 seconds
+WARNING 2026-08-21 16:42:50,701 log "GET /admin/users/customuser/ HTTP/1.1" 403 15107
+INFO 2026-08-21 16:42:50,717 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:42:50,717 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:42:57,948 middleware GET /admin/ - 200 - 0.010 seconds
+INFO 2026-08-21 16:42:57,963 log "GET /admin/ HTTP/1.1" 200 21816
+INFO 2026-08-21 16:43:02,043 middleware POST /admin/logout/ - 200 - 0.022 seconds
+INFO 2026-08-21 16:43:02,058 log "POST /admin/logout/ HTTP/1.1" 200 18476
+INFO 2026-08-21 16:43:04,136 middleware GET /admin/ - 302 - 0.001 seconds
+INFO 2026-08-21 16:43:04,148 log "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:43:04,157 middleware GET /admin/login/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:43:04,168 log "GET /admin/login/?next=/admin/ HTTP/1.1" 200 19086
+INFO 2026-08-21 16:43:06,475 middleware POST /admin/login/ - 302 - 0.541 seconds
+INFO 2026-08-21 16:43:06,484 log "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:43:06,498 middleware GET /admin/ - 200 - 0.010 seconds
+INFO 2026-08-21 16:43:06,521 log "GET /admin/ HTTP/1.1" 200 28382
+INFO 2026-08-21 16:43:08,801 middleware GET /admin/users/customuser/ - 200 - 0.017 seconds
+INFO 2026-08-21 16:43:08,820 log "GET /admin/users/customuser/ HTTP/1.1" 200 27366
+INFO 2026-08-21 16:43:08,845 middleware GET /admin/jsi18n/ - 200 - 0.005 seconds
+INFO 2026-08-21 16:43:08,858 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:43:10,436 middleware GET /admin/users/customuser/2/change/ - 200 - 0.073 seconds
+INFO 2026-08-21 16:43:10,464 log "GET /admin/users/customuser/2/change/ HTTP/1.1" 200 41703
+INFO 2026-08-21 16:43:10,487 middleware GET /admin/jsi18n/ - 200 - 0.004 seconds
+INFO 2026-08-21 16:43:10,498 log "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2026-08-21 16:43:18,869 middleware GET /books/ - 200 - 0.009 seconds
+INFO 2026-08-21 16:43:18,886 log "GET /books/ HTTP/1.1" 200 22303
+INFO 2026-08-21 16:43:18,902 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:43:18,911 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:43:22,978 middleware GET /books/6/edit/ - 200 - 0.011 seconds
+INFO 2026-08-21 16:43:22,995 log "GET /books/6/edit/ HTTP/1.1" 200 17921
+INFO 2026-08-21 16:43:28,443 middleware POST /books/6/edit/ - 302 - 0.011 seconds
+INFO 2026-08-21 16:43:28,456 log "POST /books/6/edit/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:43:28,466 middleware GET /books/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:43:28,478 log "GET /books/ HTTP/1.1" 200 22303
+INFO 2026-08-21 16:46:26,398 middleware POST /users/logout/ - 302 - 0.016 seconds
+INFO 2026-08-21 16:46:26,412 log "POST /users/logout/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:46:26,420 middleware GET /books/ - 200 - 0.005 seconds
+INFO 2026-08-21 16:46:26,435 log "GET /books/ HTTP/1.1" 200 22065
+INFO 2026-08-21 16:46:26,850 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\books\views.py changed, reloading.
+INFO 2026-08-21 16:46:27,528 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 16:46:28,181 middleware GET /users/login/ - 200 - 0.016 seconds
+INFO 2026-08-21 16:46:28,196 log "GET /users/login/ HTTP/1.1" 200 16926
+INFO 2026-08-21 16:46:34,314 middleware POST /users/login/ - 302 - 0.692 seconds
+INFO 2026-08-21 16:46:34,324 log "POST /users/login/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:46:34,344 middleware GET /books/ - 200 - 0.017 seconds
+INFO 2026-08-21 16:46:34,356 log "GET /books/ HTTP/1.1" 200 22309
+INFO 2026-08-21 16:46:40,671 middleware GET /books/6/delete/ - 200 - 0.007 seconds
+INFO 2026-08-21 16:46:40,687 log "GET /books/6/delete/ HTTP/1.1" 200 16900
+INFO 2026-08-21 16:46:43,119 middleware POST /books/6/delete/ - 302 - 0.014 seconds
+INFO 2026-08-21 16:46:43,129 log "POST /books/6/delete/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:46:43,138 middleware GET /books/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:46:43,154 log "GET /books/ HTTP/1.1" 200 21308
+INFO 2026-08-21 16:52:17,981 middleware GET /books/add/ - 200 - 0.014 seconds
+INFO 2026-08-21 16:52:17,997 log "GET /books/add/ HTTP/1.1" 200 17843
+INFO 2026-08-21 16:52:18,020 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:52:18,020 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:52:18,026 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:52:18,027 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:52:18,349 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\books\views.py changed, reloading.
+INFO 2026-08-21 16:52:18,957 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 16:52:40,608 views Book created: test
+INFO 2026-08-21 16:52:40,608 middleware POST /books/add/ - 302 - 0.178 seconds
+INFO 2026-08-21 16:52:40,625 log "POST /books/add/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:52:40,644 middleware GET /books/ - 200 - 0.016 seconds
+INFO 2026-08-21 16:52:40,659 log "GET /books/ HTTP/1.1" 200 22280
+INFO 2026-08-21 16:52:43,353 middleware GET /books/7/delete/ - 200 - 0.009 seconds
+INFO 2026-08-21 16:52:43,367 log "GET /books/7/delete/ HTTP/1.1" 200 16882
+INFO 2026-08-21 16:52:45,321 middleware POST /books/7/delete/ - 302 - 0.015 seconds
+INFO 2026-08-21 16:52:45,332 log "POST /books/7/delete/ HTTP/1.1" 302 0
+INFO 2026-08-21 16:52:45,342 middleware GET /books/ - 200 - 0.006 seconds
+INFO 2026-08-21 16:52:45,355 log "GET /books/ HTTP/1.1" 200 21308
+INFO 2026-08-21 16:56:20,846 autoreload Watching for file changes with StatReloader
+ERROR 2026-08-21 16:56:25,624 log Internal Server Error: /books/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\smartif.py", line 181, in translate_token
+    op = OPERATORS[token]
+         ~~~~~~~~~^^^^^^^
+KeyError: "request.user.has_perm('books.delete_book')"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 993, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 926, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\smartif.py", line 172, in __init__
+    mapped_tokens.append(self.translate_token(token))
+                         ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\smartif.py", line 183, in translate_token
+    return self.create_var(token)
+           ~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 929, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 776, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\books\templates\books\book_list.html, Could not parse the remainder: '('books.delete_book')' from 'request.user.has_perm('books.delete_book')'
+INFO 2026-08-21 16:56:25,630 middleware GET /books/ - 500 - 0.231 seconds
+ERROR 2026-08-21 16:56:25,697 log "GET /books/ HTTP/1.1" 500 287368
+ERROR 2026-08-21 16:57:41,562 log Internal Server Error: /books/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 993, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\smartif.py", line 199, in parse
+    raise self.error_class(
+        "Unused '%s' at end of if expression." % self.current_token.display()
+    )
+django.template.exceptions.TemplateSyntaxError: Template: C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\books\templates\books\book_list.html, Unused ''books.delete_book'' at end of if expression.
+INFO 2026-08-21 16:57:41,566 middleware GET /books/ - 500 - 0.052 seconds
+ERROR 2026-08-21 16:57:41,648 log "GET /books/ HTTP/1.1" 500 252362
+INFO 2026-08-21 16:59:35,149 middleware GET /books/ - 200 - 0.029 seconds
+INFO 2026-08-21 16:59:35,169 log "GET /books/ HTTP/1.1" 200 20968
+INFO 2026-08-21 16:59:35,190 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:59:35,190 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 16:59:35,201 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 16:59:35,201 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 17:00:02,884 middleware GET /books/ - 200 - 0.020 seconds
+INFO 2026-08-21 17:00:02,903 log "GET /books/?q=&category=business HTTP/1.1" 200 18289
+INFO 2026-08-21 17:16:48,125 middleware GET /books/ - 200 - 0.012 seconds
+INFO 2026-08-21 17:16:48,143 log "GET /books/?q=&category=business HTTP/1.1" 200 27794
+INFO 2026-08-21 17:16:48,164 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-08-21 17:16:48,165 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-08-21 17:16:48,178 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-08-21 17:16:48,178 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-08-21 17:17:04,683 middleware GET /books/ - 200 - 0.011 seconds
+INFO 2026-08-21 17:17:04,701 log "GET /books/?page=2&category=business HTTP/1.1" 200 28067
+INFO 2026-08-21 17:17:13,193 middleware GET /books/ - 200 - 0.014 seconds
+INFO 2026-08-21 17:17:13,208 log "GET /books/?page=3&category=business HTTP/1.1" 200 28087
+INFO 2026-08-21 17:17:31,557 middleware GET /books/ - 200 - 0.012 seconds
+INFO 2026-08-21 17:17:31,573 log "GET /books/?page=4&category=business HTTP/1.1" 200 20787
+INFO 2026-08-21 17:18:36,331 middleware GET /books/ - 200 - 0.011 seconds
+INFO 2026-08-21 17:18:36,346 log "GET /books/?page=4&category=business HTTP/1.1" 200 20787
+INFO 2026-08-21 17:18:36,865 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\books\views.py changed, reloading.
+INFO 2026-08-21 17:18:37,448 autoreload Watching for file changes with StatReloader
+INFO 2026-08-21 17:18:38,866 middleware GET /books/ - 404 - 0.193 seconds
+WARNING 2026-08-21 17:18:38,884 log Not Found: /books/
+WARNING 2026-08-21 17:18:38,884 log "GET /books/?page=4&category=business HTTP/1.1" 404 17811
+INFO 2026-08-21 17:19:05,393 middleware GET /books/ - 200 - 0.023 seconds
+INFO 2026-08-21 17:19:05,404 log "GET /books/ HTTP/1.1" 200 32466
+INFO 2026-08-21 17:19:22,525 middleware GET /books/ - 200 - 0.014 seconds
+INFO 2026-08-21 17:19:22,543 log "GET /books/?page=2 HTTP/1.1" 200 33064
+INFO 2026-08-21 17:19:25,973 middleware GET /books/ - 200 - 0.015 seconds
+INFO 2026-08-21 17:19:25,989 log "GET /books/?page=3 HTTP/1.1" 200 33056
+INFO 2026-08-21 17:19:29,150 middleware GET /books/ - 200 - 0.015 seconds
+INFO 2026-08-21 17:19:29,167 log "GET /books/?page=4 HTTP/1.1" 200 33101
+INFO 2026-08-21 17:19:32,632 middleware GET /books/ - 200 - 0.014 seconds
+INFO 2026-08-21 17:19:32,648 log "GET /books/?page=5 HTTP/1.1" 200 33039
+INFO 2026-08-21 17:19:35,549 middleware GET /books/ - 200 - 0.014 seconds
+INFO 2026-08-21 17:19:35,565 log "GET /books/?page=6 HTTP/1.1" 200 33044
+INFO 2026-08-28 10:02:07,059 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:04:21,923 middleware GET /favicon.ico - 404 - 0.007 seconds
+WARNING 2026-08-28 10:04:21,927 log Not Found: /favicon.ico
+WARNING 2026-08-28 10:04:21,929 log "GET /favicon.ico HTTP/1.1" 404 2829
+INFO 2026-08-28 10:04:22,272 middleware GET /admin/users/customuser/ - 302 - 0.028 seconds
+INFO 2026-08-28 10:04:22,274 log "GET /admin/users/customuser/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:04:22,307 middleware GET /admin/login/ - 200 - 0.026 seconds
+INFO 2026-08-28 10:04:22,309 log "GET /admin/login/?next=/admin/users/customuser/ HTTP/1.1" 200 4117
+INFO 2026-08-28 10:04:23,824 middleware GET /admin/users/customuser/2/change/ - 302 - 0.001 seconds
+INFO 2026-08-28 10:04:23,829 log "GET /admin/users/customuser/2/change/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:04:23,841 middleware GET /admin/login/ - 200 - 0.006 seconds
+INFO 2026-08-28 10:04:23,842 log "GET /admin/login/?next=/admin/users/customuser/2/change/ HTTP/1.1" 200 4135
+INFO 2026-08-28 10:04:39,767 middleware GET /books/ - 200 - 0.066 seconds
+INFO 2026-08-28 10:04:39,769 log "GET /books/ HTTP/1.1" 200 1818
+INFO 2026-08-28 10:04:39,829 log "GET /static/images/logo.png HTTP/1.1" 304 0
+INFO 2026-08-28 10:04:39,963 middleware GET /books/ - 200 - 0.025 seconds
+INFO 2026-08-28 10:04:39,965 log "GET /books/ HTTP/1.1" 200 1818
+INFO 2026-08-28 10:08:57,544 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:08:58,967 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:11:34,831 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:11:36,029 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:23:41,009 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:23:42,313 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:25:36,780 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:25:38,541 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:29:07,915 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:29:10,015 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:30:07,045 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:30:09,153 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:33:44,025 autoreload /app/DjangoBookStore/settings.py changed, reloading.
+INFO 2026-08-28 10:33:45,745 autoreload Watching for file changes with StatReloader
+INFO 2026-08-28 10:39:20,545 middleware GET /books/ - 200 - 0.123 seconds
+INFO 2026-08-28 10:39:20,549 log "GET /books/ HTTP/1.1" 200 17232
+INFO 2026-08-28 10:39:44,402 middleware GET /books/ - 200 - 0.040 seconds
+INFO 2026-08-28 10:39:44,405 log "GET /books/ HTTP/1.1" 200 17232
+INFO 2026-08-28 10:39:47,941 middleware GET /admin/ - 302 - 0.021 seconds
+INFO 2026-08-28 10:39:47,944 log "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:39:48,033 middleware GET /admin/login/ - 200 - 0.079 seconds
+INFO 2026-08-28 10:39:48,036 log "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4083
+INFO 2026-08-28 10:39:54,513 middleware POST /admin/login/ - 302 - 0.510 seconds
+INFO 2026-08-28 10:39:54,515 log "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:39:54,573 middleware GET /admin/ - 200 - 0.047 seconds
+INFO 2026-08-28 10:39:54,575 log "GET /admin/ HTTP/1.1" 200 13402
+INFO 2026-08-28 10:40:18,320 middleware POST /admin/logout/ - 200 - 0.119 seconds
+INFO 2026-08-28 10:40:18,322 log "POST /admin/logout/ HTTP/1.1" 200 3475
+INFO 2026-08-28 10:40:21,079 middleware GET /admin/ - 302 - 0.001 seconds
+INFO 2026-08-28 10:40:21,084 log "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:40:21,105 middleware GET /admin/login/ - 200 - 0.007 seconds
+INFO 2026-08-28 10:40:21,107 log "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4083
+INFO 2026-08-28 10:40:28,175 middleware POST /admin/login/ - 302 - 0.615 seconds
+INFO 2026-08-28 10:40:28,177 log "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:40:28,236 middleware GET /admin/ - 200 - 0.047 seconds
+INFO 2026-08-28 10:40:28,238 log "GET /admin/ HTTP/1.1" 200 6621
+INFO 2026-08-28 10:41:29,399 middleware POST /admin/logout/ - 200 - 0.132 seconds
+INFO 2026-08-28 10:41:29,402 log "POST /admin/logout/ HTTP/1.1" 200 3475
+INFO 2026-08-28 10:41:31,696 middleware GET /admin/ - 302 - 0.001 seconds
+INFO 2026-08-28 10:41:31,700 log "GET /admin/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:41:31,719 middleware GET /admin/login/ - 200 - 0.006 seconds
+INFO 2026-08-28 10:41:31,723 log "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4083
+INFO 2026-08-28 10:41:33,609 middleware POST /admin/login/ - 302 - 0.488 seconds
+INFO 2026-08-28 10:41:33,611 log "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2026-08-28 10:41:33,675 middleware GET /admin/ - 200 - 0.052 seconds
+INFO 2026-08-28 10:41:33,678 log "GET /admin/ HTTP/1.1" 200 13402

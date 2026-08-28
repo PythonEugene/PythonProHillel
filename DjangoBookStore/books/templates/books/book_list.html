@@ -40,7 +40,9 @@
                     <a href="{% url 'books:detail' book.pk %}" class="btn btn-sm btn-outline-primary">Детальніше</a>
                     <div>
                         <a href="{% url 'books:edit' book.pk %}" class="btn btn-sm btn-outline-secondary">Редагувати</a>
+                        {% if request.user.is_superuser or perms.books.delete_book %}
                         <a href="{% url 'books:delete' book.pk %}" class="btn btn-sm btn-outline-danger">Видалити</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,2051 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-08-20T19:36:30.200Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "yb+notsuper@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\", \"Email\", \"First Name\", \"Phone Number\", \"Is staff\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-08-20T19:51:08.508Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "yb@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Email\", \"First Name\", \"Phone Number\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-08-20T20:01:45.452Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is staff\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-08-21T12:09:36.066Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is staff\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-08-21T12:22:22.656Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "All permissions",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-08-21T12:22:55.021Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\", \"User permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-08-21T12:43:16.221Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-08-21T12:46:08.787Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-08-21T13:39:12.657Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Python for begginers",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-08-21T13:40:06.931Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Python Pro",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-08-21T13:40:34.134Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "1984",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-08-21T13:41:23.828Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "How to became a millioner",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-08-21T13:43:41.357Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"User permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-08-21T13:44:42.541Z",
+    "user": 2,
+    "content_type": 2,
+    "object_id": "2",
+    "object_repr": "test",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-08-21T13:44:49.535Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-08-21T13:48:35.964Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-08-21T14:41:35.015Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-08-21T14:42:34.950Z",
+    "user": 2,
+    "content_type": 2,
+    "object_id": "3",
+    "object_repr": "Administration",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-08-21T14:42:41.328Z",
+    "user": 2,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "testuser@example.com",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\", \"User permissions\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 3,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 3,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 3,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 3,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 2,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 2,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 2,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 2,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Category",
+    "content_type": 7,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Category",
+    "content_type": 7,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Category",
+    "content_type": 7,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Category",
+    "content_type": 7,
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Book",
+    "content_type": 8,
+    "codename": "add_book"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Book",
+    "content_type": 8,
+    "codename": "change_book"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Book",
+    "content_type": 8,
+    "codename": "delete_book"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Book",
+    "content_type": 8,
+    "codename": "view_book"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add User",
+    "content_type": 9,
+    "codename": "add_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change User",
+    "content_type": 9,
+    "codename": "change_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete User",
+    "content_type": 9,
+    "codename": "delete_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view User",
+    "content_type": 9,
+    "codename": "view_customuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "User can add permissions",
+    "content_type": 9,
+    "codename": "can_set_user_permissions"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "User can set permissions list",
+    "content_type": 9,
+    "codename": "can_see_user_permissions"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "All permissions",
+    "permissions": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      11,
+      12,
+      5,
+      6,
+      7,
+      8,
+      13,
+      14,
+      15,
+      16,
+      29,
+      30,
+      31,
+      32,
+      25,
+      26,
+      27,
+      28,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      33,
+      38,
+      37,
+      34,
+      35,
+      36
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "test",
+    "permissions": [
+      2
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "Administration",
+    "permissions": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "categories",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "books",
+    "model": "book"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "users",
+    "model": "customuser"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 1,
+  "fields": {
+    "name": "Programming",
+    "slug": "programming"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 2,
+  "fields": {
+    "name": "Business",
+    "slug": "business"
+  }
+},
+{
+  "model": "categories.category",
+  "pk": 3,
+  "fields": {
+    "name": "Fiction",
+    "slug": "fiction"
+  }
+},
+{
+  "model": "books.book",
+  "pk": 1,
+  "fields": {
+    "title": "Python for begginers",
+    "author": "Mark Lutz",
+    "price": "1500.00",
+    "description": "",
+    "stock": 101,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 2,
+  "fields": {
+    "title": "Python Pro",
+    "author": "Luciano Romalho",
+    "price": "2000.00",
+    "description": "",
+    "stock": 50,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 4,
+  "fields": {
+    "title": "How to became a millioner",
+    "author": "Mike Thomson",
+    "price": "1000000.00",
+    "description": "",
+    "stock": 1,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 5,
+  "fields": {
+    "title": "1984",
+    "author": "George Orwell",
+    "price": "900.00",
+    "description": "",
+    "stock": 20,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 8,
+  "fields": {
+    "title": "Mastering Backend Systems #1",
+    "author": "Alice Johnson",
+    "price": "2566.95",
+    "description": "This is a randomly generated description for the book \"Mastering Backend Systems #1\".",
+    "stock": 18,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 9,
+  "fields": {
+    "title": "Advanced API Design #2",
+    "author": "Luciano Ramalho",
+    "price": "1229.90",
+    "description": "This is a randomly generated description for the book \"Advanced API Design #2\".",
+    "stock": 10,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 10,
+  "fields": {
+    "title": "Mastering API Design #3",
+    "author": "Michael Brown",
+    "price": "1867.24",
+    "description": "This is a randomly generated description for the book \"Mastering API Design #3\".",
+    "stock": 14,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 11,
+  "fields": {
+    "title": "Beginning API Design #4",
+    "author": "John Smith",
+    "price": "1625.88",
+    "description": "This is a randomly generated description for the book \"Beginning API Design #4\".",
+    "stock": 4,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 12,
+  "fields": {
+    "title": "Ultimate Django Framework #5",
+    "author": "Mark Lutz",
+    "price": "2357.70",
+    "description": "This is a randomly generated description for the book \"Ultimate Django Framework #5\".",
+    "stock": 37,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 13,
+  "fields": {
+    "title": "Learning Backend Systems #6",
+    "author": "Luciano Ramalho",
+    "price": "1224.37",
+    "description": "This is a randomly generated description for the book \"Learning Backend Systems #6\".",
+    "stock": 4,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 14,
+  "fields": {
+    "title": "Modern Cybersecurity #7",
+    "author": "Mark Lutz",
+    "price": "2294.64",
+    "description": "This is a randomly generated description for the book \"Modern Cybersecurity #7\".",
+    "stock": 27,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 15,
+  "fields": {
+    "title": "Practical Cybersecurity #8",
+    "author": "Luciano Ramalho",
+    "price": "1137.04",
+    "description": "This is a randomly generated description for the book \"Practical Cybersecurity #8\".",
+    "stock": 6,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 16,
+  "fields": {
+    "title": "Modern Artificial Intelligence #9",
+    "author": "Luciano Ramalho",
+    "price": "703.90",
+    "description": "This is a randomly generated description for the book \"Modern Artificial Intelligence #9\".",
+    "stock": 38,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 17,
+  "fields": {
+    "title": "Beginning Software Architecture #10",
+    "author": "Luciano Ramalho",
+    "price": "1638.87",
+    "description": "This is a randomly generated description for the book \"Beginning Software Architecture #10\".",
+    "stock": 18,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 18,
+  "fields": {
+    "title": "Learning Data Science #11",
+    "author": "Mark Lutz",
+    "price": "1670.45",
+    "description": "This is a randomly generated description for the book \"Learning Data Science #11\".",
+    "stock": 43,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 19,
+  "fields": {
+    "title": "Beginning Software Architecture #12",
+    "author": "John Smith",
+    "price": "603.39",
+    "description": "This is a randomly generated description for the book \"Beginning Software Architecture #12\".",
+    "stock": 28,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 20,
+  "fields": {
+    "title": "Practical Backend Systems #13",
+    "author": "Alice Johnson",
+    "price": "1781.50",
+    "description": "This is a randomly generated description for the book \"Practical Backend Systems #13\".",
+    "stock": 45,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 21,
+  "fields": {
+    "title": "Python for Backend Systems #14",
+    "author": "David Beazley",
+    "price": "2236.61",
+    "description": "This is a randomly generated description for the book \"Python for Backend Systems #14\".",
+    "stock": 44,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 22,
+  "fields": {
+    "title": "Clean API Design #15",
+    "author": "Luciano Ramalho",
+    "price": "1175.05",
+    "description": "This is a randomly generated description for the book \"Clean API Design #15\".",
+    "stock": 32,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 23,
+  "fields": {
+    "title": "Modern Django Framework #16",
+    "author": "Robert Martin",
+    "price": "1244.86",
+    "description": "This is a randomly generated description for the book \"Modern Django Framework #16\".",
+    "stock": 35,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 24,
+  "fields": {
+    "title": "Mastering Databases #17",
+    "author": "Alice Johnson",
+    "price": "2685.40",
+    "description": "This is a randomly generated description for the book \"Mastering Databases #17\".",
+    "stock": 34,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 25,
+  "fields": {
+    "title": "Beginning Data Science #18",
+    "author": "Mark Lutz",
+    "price": "710.31",
+    "description": "This is a randomly generated description for the book \"Beginning Data Science #18\".",
+    "stock": 19,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 26,
+  "fields": {
+    "title": "Advanced Software Architecture #19",
+    "author": "Michael Brown",
+    "price": "1711.47",
+    "description": "This is a randomly generated description for the book \"Advanced Software Architecture #19\".",
+    "stock": 0,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 27,
+  "fields": {
+    "title": "Mastering Backend Systems #20",
+    "author": "David Beazley",
+    "price": "1963.59",
+    "description": "This is a randomly generated description for the book \"Mastering Backend Systems #20\".",
+    "stock": 40,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 28,
+  "fields": {
+    "title": "Python for Backend Systems #21",
+    "author": "Robert Martin",
+    "price": "2764.74",
+    "description": "This is a randomly generated description for the book \"Python for Backend Systems #21\".",
+    "stock": 27,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 29,
+  "fields": {
+    "title": "Learning API Design #22",
+    "author": "Alice Johnson",
+    "price": "2561.07",
+    "description": "This is a randomly generated description for the book \"Learning API Design #22\".",
+    "stock": 48,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 30,
+  "fields": {
+    "title": "Deep Dive into Backend Systems #23",
+    "author": "Luciano Ramalho",
+    "price": "838.45",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Backend Systems #23\".",
+    "stock": 19,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 31,
+  "fields": {
+    "title": "Mastering API Design #24",
+    "author": "Alice Johnson",
+    "price": "2730.81",
+    "description": "This is a randomly generated description for the book \"Mastering API Design #24\".",
+    "stock": 21,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 32,
+  "fields": {
+    "title": "Deep Dive into Databases #25",
+    "author": "David Beazley",
+    "price": "1403.36",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Databases #25\".",
+    "stock": 14,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 33,
+  "fields": {
+    "title": "Clean Cybersecurity #26",
+    "author": "Michael Brown",
+    "price": "1851.21",
+    "description": "This is a randomly generated description for the book \"Clean Cybersecurity #26\".",
+    "stock": 13,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 34,
+  "fields": {
+    "title": "Deep Dive into Backend Systems #27",
+    "author": "David Beazley",
+    "price": "1267.79",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Backend Systems #27\".",
+    "stock": 8,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 35,
+  "fields": {
+    "title": "Python for Algorithms #28",
+    "author": "Robert Martin",
+    "price": "1035.50",
+    "description": "This is a randomly generated description for the book \"Python for Algorithms #28\".",
+    "stock": 7,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 36,
+  "fields": {
+    "title": "Clean Algorithms #29",
+    "author": "Alice Johnson",
+    "price": "1436.77",
+    "description": "This is a randomly generated description for the book \"Clean Algorithms #29\".",
+    "stock": 48,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 37,
+  "fields": {
+    "title": "Deep Dive into Cybersecurity #30",
+    "author": "Michael Brown",
+    "price": "1384.39",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Cybersecurity #30\".",
+    "stock": 4,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 38,
+  "fields": {
+    "title": "Advanced Algorithms #31",
+    "author": "Robert Martin",
+    "price": "1003.17",
+    "description": "This is a randomly generated description for the book \"Advanced Algorithms #31\".",
+    "stock": 32,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 39,
+  "fields": {
+    "title": "Modern Software Architecture #32",
+    "author": "John Smith",
+    "price": "2713.20",
+    "description": "This is a randomly generated description for the book \"Modern Software Architecture #32\".",
+    "stock": 33,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 40,
+  "fields": {
+    "title": "Ultimate Web Development #33",
+    "author": "Alice Johnson",
+    "price": "2323.95",
+    "description": "This is a randomly generated description for the book \"Ultimate Web Development #33\".",
+    "stock": 2,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 41,
+  "fields": {
+    "title": "Python for Data Science #34",
+    "author": "Mark Lutz",
+    "price": "2426.57",
+    "description": "This is a randomly generated description for the book \"Python for Data Science #34\".",
+    "stock": 16,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 42,
+  "fields": {
+    "title": "Ultimate API Design #35",
+    "author": "Luciano Ramalho",
+    "price": "2676.55",
+    "description": "This is a randomly generated description for the book \"Ultimate API Design #35\".",
+    "stock": 46,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 43,
+  "fields": {
+    "title": "Modern Backend Systems #36",
+    "author": "John Smith",
+    "price": "599.90",
+    "description": "This is a randomly generated description for the book \"Modern Backend Systems #36\".",
+    "stock": 12,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 44,
+  "fields": {
+    "title": "Practical Django Framework #37",
+    "author": "Robert Martin",
+    "price": "1555.02",
+    "description": "This is a randomly generated description for the book \"Practical Django Framework #37\".",
+    "stock": 10,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 45,
+  "fields": {
+    "title": "Clean Backend Systems #38",
+    "author": "Alice Johnson",
+    "price": "2137.13",
+    "description": "This is a randomly generated description for the book \"Clean Backend Systems #38\".",
+    "stock": 22,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 46,
+  "fields": {
+    "title": "Python for Software Architecture #39",
+    "author": "Robert Martin",
+    "price": "1330.90",
+    "description": "This is a randomly generated description for the book \"Python for Software Architecture #39\".",
+    "stock": 36,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 47,
+  "fields": {
+    "title": "Modern Backend Systems #40",
+    "author": "Mark Lutz",
+    "price": "2869.17",
+    "description": "This is a randomly generated description for the book \"Modern Backend Systems #40\".",
+    "stock": 3,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 48,
+  "fields": {
+    "title": "Beginning Algorithms #41",
+    "author": "David Beazley",
+    "price": "2269.04",
+    "description": "This is a randomly generated description for the book \"Beginning Algorithms #41\".",
+    "stock": 34,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 49,
+  "fields": {
+    "title": "Mastering Algorithms #42",
+    "author": "Mark Lutz",
+    "price": "1251.68",
+    "description": "This is a randomly generated description for the book \"Mastering Algorithms #42\".",
+    "stock": 5,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 50,
+  "fields": {
+    "title": "Deep Dive into Artificial Intelligence #43",
+    "author": "Michael Brown",
+    "price": "2667.83",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Artificial Intelligence #43\".",
+    "stock": 42,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 51,
+  "fields": {
+    "title": "Beginning Cybersecurity #44",
+    "author": "Mark Lutz",
+    "price": "2940.82",
+    "description": "This is a randomly generated description for the book \"Beginning Cybersecurity #44\".",
+    "stock": 36,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 52,
+  "fields": {
+    "title": "Python for Web Development #45",
+    "author": "John Smith",
+    "price": "1173.26",
+    "description": "This is a randomly generated description for the book \"Python for Web Development #45\".",
+    "stock": 45,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 53,
+  "fields": {
+    "title": "Clean Backend Systems #46",
+    "author": "Michael Brown",
+    "price": "2119.80",
+    "description": "This is a randomly generated description for the book \"Clean Backend Systems #46\".",
+    "stock": 38,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 54,
+  "fields": {
+    "title": "Deep Dive into API Design #47",
+    "author": "Mark Lutz",
+    "price": "2890.81",
+    "description": "This is a randomly generated description for the book \"Deep Dive into API Design #47\".",
+    "stock": 2,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 55,
+  "fields": {
+    "title": "Learning API Design #48",
+    "author": "Robert Martin",
+    "price": "2431.57",
+    "description": "This is a randomly generated description for the book \"Learning API Design #48\".",
+    "stock": 17,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 56,
+  "fields": {
+    "title": "Advanced Django Framework #49",
+    "author": "Mark Lutz",
+    "price": "2517.06",
+    "description": "This is a randomly generated description for the book \"Advanced Django Framework #49\".",
+    "stock": 43,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 57,
+  "fields": {
+    "title": "Python for Artificial Intelligence #50",
+    "author": "Michael Brown",
+    "price": "1727.65",
+    "description": "This is a randomly generated description for the book \"Python for Artificial Intelligence #50\".",
+    "stock": 4,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 58,
+  "fields": {
+    "title": "Python for Backend Systems #51",
+    "author": "Robert Martin",
+    "price": "1032.28",
+    "description": "This is a randomly generated description for the book \"Python for Backend Systems #51\".",
+    "stock": 17,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 59,
+  "fields": {
+    "title": "Clean Software Architecture #52",
+    "author": "David Beazley",
+    "price": "2075.77",
+    "description": "This is a randomly generated description for the book \"Clean Software Architecture #52\".",
+    "stock": 5,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 60,
+  "fields": {
+    "title": "Mastering Web Development #53",
+    "author": "Luciano Ramalho",
+    "price": "1152.58",
+    "description": "This is a randomly generated description for the book \"Mastering Web Development #53\".",
+    "stock": 22,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 61,
+  "fields": {
+    "title": "Deep Dive into API Design #54",
+    "author": "Robert Martin",
+    "price": "2738.62",
+    "description": "This is a randomly generated description for the book \"Deep Dive into API Design #54\".",
+    "stock": 20,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 62,
+  "fields": {
+    "title": "Beginning Cybersecurity #55",
+    "author": "Mark Lutz",
+    "price": "1073.91",
+    "description": "This is a randomly generated description for the book \"Beginning Cybersecurity #55\".",
+    "stock": 26,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 63,
+  "fields": {
+    "title": "Deep Dive into Databases #56",
+    "author": "Michael Brown",
+    "price": "2136.21",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Databases #56\".",
+    "stock": 27,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 64,
+  "fields": {
+    "title": "Modern Web Development #57",
+    "author": "Luciano Ramalho",
+    "price": "645.17",
+    "description": "This is a randomly generated description for the book \"Modern Web Development #57\".",
+    "stock": 7,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 65,
+  "fields": {
+    "title": "Mastering Databases #58",
+    "author": "Robert Martin",
+    "price": "1776.81",
+    "description": "This is a randomly generated description for the book \"Mastering Databases #58\".",
+    "stock": 40,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 66,
+  "fields": {
+    "title": "Deep Dive into Databases #59",
+    "author": "David Beazley",
+    "price": "2600.04",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Databases #59\".",
+    "stock": 16,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 67,
+  "fields": {
+    "title": "Beginning Databases #60",
+    "author": "Alice Johnson",
+    "price": "1236.76",
+    "description": "This is a randomly generated description for the book \"Beginning Databases #60\".",
+    "stock": 33,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 68,
+  "fields": {
+    "title": "Python for Web Development #61",
+    "author": "John Smith",
+    "price": "2395.70",
+    "description": "This is a randomly generated description for the book \"Python for Web Development #61\".",
+    "stock": 45,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 69,
+  "fields": {
+    "title": "Practical Django Framework #62",
+    "author": "John Smith",
+    "price": "2317.06",
+    "description": "This is a randomly generated description for the book \"Practical Django Framework #62\".",
+    "stock": 18,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 70,
+  "fields": {
+    "title": "Beginning Artificial Intelligence #63",
+    "author": "Robert Martin",
+    "price": "1999.11",
+    "description": "This is a randomly generated description for the book \"Beginning Artificial Intelligence #63\".",
+    "stock": 14,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 71,
+  "fields": {
+    "title": "Ultimate Software Architecture #64",
+    "author": "Michael Brown",
+    "price": "905.04",
+    "description": "This is a randomly generated description for the book \"Ultimate Software Architecture #64\".",
+    "stock": 9,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 72,
+  "fields": {
+    "title": "Practical Backend Systems #65",
+    "author": "Luciano Ramalho",
+    "price": "1161.63",
+    "description": "This is a randomly generated description for the book \"Practical Backend Systems #65\".",
+    "stock": 40,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 73,
+  "fields": {
+    "title": "Mastering Web Development #66",
+    "author": "David Beazley",
+    "price": "1131.65",
+    "description": "This is a randomly generated description for the book \"Mastering Web Development #66\".",
+    "stock": 5,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 74,
+  "fields": {
+    "title": "Mastering Algorithms #67",
+    "author": "Mark Lutz",
+    "price": "2487.05",
+    "description": "This is a randomly generated description for the book \"Mastering Algorithms #67\".",
+    "stock": 45,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 75,
+  "fields": {
+    "title": "Learning Databases #68",
+    "author": "Alice Johnson",
+    "price": "1977.96",
+    "description": "This is a randomly generated description for the book \"Learning Databases #68\".",
+    "stock": 23,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 76,
+  "fields": {
+    "title": "Beginning Data Science #69",
+    "author": "Alice Johnson",
+    "price": "2761.43",
+    "description": "This is a randomly generated description for the book \"Beginning Data Science #69\".",
+    "stock": 44,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 77,
+  "fields": {
+    "title": "Mastering Algorithms #70",
+    "author": "Robert Martin",
+    "price": "1227.94",
+    "description": "This is a randomly generated description for the book \"Mastering Algorithms #70\".",
+    "stock": 28,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 78,
+  "fields": {
+    "title": "Ultimate API Design #71",
+    "author": "Mark Lutz",
+    "price": "1870.03",
+    "description": "This is a randomly generated description for the book \"Ultimate API Design #71\".",
+    "stock": 50,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 79,
+  "fields": {
+    "title": "Deep Dive into Databases #72",
+    "author": "Alice Johnson",
+    "price": "1560.20",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Databases #72\".",
+    "stock": 4,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 80,
+  "fields": {
+    "title": "Clean Web Development #73",
+    "author": "John Smith",
+    "price": "1546.01",
+    "description": "This is a randomly generated description for the book \"Clean Web Development #73\".",
+    "stock": 0,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 81,
+  "fields": {
+    "title": "Learning Artificial Intelligence #74",
+    "author": "John Smith",
+    "price": "2861.08",
+    "description": "This is a randomly generated description for the book \"Learning Artificial Intelligence #74\".",
+    "stock": 23,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 82,
+  "fields": {
+    "title": "Practical Cybersecurity #75",
+    "author": "Mark Lutz",
+    "price": "2647.81",
+    "description": "This is a randomly generated description for the book \"Practical Cybersecurity #75\".",
+    "stock": 1,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 83,
+  "fields": {
+    "title": "Modern Data Science #76",
+    "author": "Alice Johnson",
+    "price": "2560.21",
+    "description": "This is a randomly generated description for the book \"Modern Data Science #76\".",
+    "stock": 37,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 84,
+  "fields": {
+    "title": "Ultimate Backend Systems #77",
+    "author": "Michael Brown",
+    "price": "1673.55",
+    "description": "This is a randomly generated description for the book \"Ultimate Backend Systems #77\".",
+    "stock": 3,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 85,
+  "fields": {
+    "title": "Python for Algorithms #78",
+    "author": "Mark Lutz",
+    "price": "545.67",
+    "description": "This is a randomly generated description for the book \"Python for Algorithms #78\".",
+    "stock": 24,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 86,
+  "fields": {
+    "title": "Deep Dive into Data Science #79",
+    "author": "Alice Johnson",
+    "price": "1183.65",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Data Science #79\".",
+    "stock": 14,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 87,
+  "fields": {
+    "title": "Modern Django Framework #80",
+    "author": "John Smith",
+    "price": "2559.96",
+    "description": "This is a randomly generated description for the book \"Modern Django Framework #80\".",
+    "stock": 41,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 88,
+  "fields": {
+    "title": "Ultimate Data Science #81",
+    "author": "Robert Martin",
+    "price": "1477.31",
+    "description": "This is a randomly generated description for the book \"Ultimate Data Science #81\".",
+    "stock": 45,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 89,
+  "fields": {
+    "title": "Python for Databases #82",
+    "author": "John Smith",
+    "price": "707.64",
+    "description": "This is a randomly generated description for the book \"Python for Databases #82\".",
+    "stock": 7,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 90,
+  "fields": {
+    "title": "Ultimate Web Development #83",
+    "author": "Robert Martin",
+    "price": "1105.16",
+    "description": "This is a randomly generated description for the book \"Ultimate Web Development #83\".",
+    "stock": 28,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 91,
+  "fields": {
+    "title": "Ultimate Cybersecurity #84",
+    "author": "Luciano Ramalho",
+    "price": "811.71",
+    "description": "This is a randomly generated description for the book \"Ultimate Cybersecurity #84\".",
+    "stock": 18,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 92,
+  "fields": {
+    "title": "Mastering Artificial Intelligence #85",
+    "author": "Mark Lutz",
+    "price": "1604.18",
+    "description": "This is a randomly generated description for the book \"Mastering Artificial Intelligence #85\".",
+    "stock": 37,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 93,
+  "fields": {
+    "title": "Practical Data Science #86",
+    "author": "Luciano Ramalho",
+    "price": "678.26",
+    "description": "This is a randomly generated description for the book \"Practical Data Science #86\".",
+    "stock": 21,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 94,
+  "fields": {
+    "title": "Clean API Design #87",
+    "author": "Alice Johnson",
+    "price": "2297.57",
+    "description": "This is a randomly generated description for the book \"Clean API Design #87\".",
+    "stock": 9,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 95,
+  "fields": {
+    "title": "Mastering Algorithms #88",
+    "author": "Michael Brown",
+    "price": "649.20",
+    "description": "This is a randomly generated description for the book \"Mastering Algorithms #88\".",
+    "stock": 7,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 96,
+  "fields": {
+    "title": "Learning Databases #89",
+    "author": "Robert Martin",
+    "price": "1885.50",
+    "description": "This is a randomly generated description for the book \"Learning Databases #89\".",
+    "stock": 29,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 97,
+  "fields": {
+    "title": "Clean Algorithms #90",
+    "author": "Michael Brown",
+    "price": "997.10",
+    "description": "This is a randomly generated description for the book \"Clean Algorithms #90\".",
+    "stock": 14,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 98,
+  "fields": {
+    "title": "Advanced Django Framework #91",
+    "author": "Mark Lutz",
+    "price": "1835.78",
+    "description": "This is a randomly generated description for the book \"Advanced Django Framework #91\".",
+    "stock": 12,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 99,
+  "fields": {
+    "title": "Mastering Cybersecurity #92",
+    "author": "Alice Johnson",
+    "price": "666.02",
+    "description": "This is a randomly generated description for the book \"Mastering Cybersecurity #92\".",
+    "stock": 20,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 100,
+  "fields": {
+    "title": "Practical Databases #93",
+    "author": "Mark Lutz",
+    "price": "2023.34",
+    "description": "This is a randomly generated description for the book \"Practical Databases #93\".",
+    "stock": 5,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 101,
+  "fields": {
+    "title": "Beginning Web Development #94",
+    "author": "Luciano Ramalho",
+    "price": "2684.51",
+    "description": "This is a randomly generated description for the book \"Beginning Web Development #94\".",
+    "stock": 17,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 102,
+  "fields": {
+    "title": "Clean Backend Systems #95",
+    "author": "John Smith",
+    "price": "1489.89",
+    "description": "This is a randomly generated description for the book \"Clean Backend Systems #95\".",
+    "stock": 25,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 103,
+  "fields": {
+    "title": "Clean Cybersecurity #96",
+    "author": "Michael Brown",
+    "price": "833.16",
+    "description": "This is a randomly generated description for the book \"Clean Cybersecurity #96\".",
+    "stock": 31,
+    "category": 1
+  }
+},
+{
+  "model": "books.book",
+  "pk": 104,
+  "fields": {
+    "title": "Deep Dive into Django Framework #97",
+    "author": "Michael Brown",
+    "price": "2442.86",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Django Framework #97\".",
+    "stock": 7,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 105,
+  "fields": {
+    "title": "Deep Dive into Data Science #98",
+    "author": "David Beazley",
+    "price": "2613.78",
+    "description": "This is a randomly generated description for the book \"Deep Dive into Data Science #98\".",
+    "stock": 25,
+    "category": 3
+  }
+},
+{
+  "model": "books.book",
+  "pk": 106,
+  "fields": {
+    "title": "Ultimate Web Development #99",
+    "author": "John Smith",
+    "price": "2561.94",
+    "description": "This is a randomly generated description for the book \"Ultimate Web Development #99\".",
+    "stock": 19,
+    "category": 2
+  }
+},
+{
+  "model": "books.book",
+  "pk": 107,
+  "fields": {
+    "title": "Python for Web Development #100",
+    "author": "Michael Brown",
+    "price": "2892.17",
+    "description": "This is a randomly generated description for the book \"Python for Web Development #100\".",
+    "stock": 31,
+    "category": 1
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$GoVeEcDxBkjnWFzHOT7GTo$u+CbqnGzhzKvXV4Uwk8g92LFLVLi98HioK/U0koTb8E=",
+    "last_login": "2026-08-21T14:43:06.465Z",
+    "is_superuser": true,
+    "email": "yb@example.com",
+    "date_of_birth": null,
+    "first_name": "Yevhenii",
+    "last_name": "",
+    "profile_image": "",
+    "phone_number": "00000000",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-20T13:53:15Z",
+    "app_lang": "uk",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$2H093BNiblQREYW7rgmyzp$mF29Ao6mXitDGxgf+KtSYofeFgIkxF6DGQ9zTLqBBRs=",
+    "last_login": "2026-08-21T14:46:34.300Z",
+    "is_superuser": false,
+    "email": "testuser@example.com",
+    "date_of_birth": null,
+    "first_name": "Test",
+    "last_name": "",
+    "profile_image": "",
+    "phone_number": "11111111",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-20T20:00:05Z",
+    "app_lang": "uk",
+    "groups": [
+      3
+    ],
+    "user_permissions": [
+      2
+    ]
+  }
+}
+]
