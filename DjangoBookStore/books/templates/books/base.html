@@ -16,6 +16,10 @@
             <div class ="navbar-nav">
                 <a class="nav-link" href="{% url 'books:list' %}">Книги</a>
                 <a class="nav-link" href="{% url 'books:add' %}">Додати книгу</a>
+                <a class="nav-link" href="{% url 'orders:cart_detail' %}">
+                    Кошик
+                    <span class="badge bg-secondary">{{ cart|default:0 }}</span>
+                </a>
                 {% if user.is_authenticated %}
                 <span class="nav-link">{{ user.email }}</span>
                 <form method="post" action="{% url 'users:logout' %}" class="d-inline">

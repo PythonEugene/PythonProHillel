@@ -535,3 +535,645 @@ INFO 2026-08-28 10:41:33,609 middleware POST /admin/login/ - 302 - 0.488 seconds
 INFO 2026-08-28 10:41:33,611 log "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
 INFO 2026-08-28 10:41:33,675 middleware GET /admin/ - 200 - 0.052 seconds
 INFO 2026-08-28 10:41:33,678 log "GET /admin/ HTTP/1.1" 200 13402
+INFO 2026-09-09 18:55:36,599 autoreload Watching for file changes with StatReloader
+INFO 2026-09-09 18:55:40,680 middleware GET / - 404 - 0.014 seconds
+WARNING 2026-09-09 18:55:40,711 log Not Found: /
+WARNING 2026-09-09 18:55:40,712 log "GET / HTTP/1.1" 404 17879
+INFO 2026-09-09 18:55:40,745 log "GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 304 0
+INFO 2026-09-09 18:55:40,747 log "GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 304 0
+INFO 2026-09-09 18:55:40,747 log "GET /static/debug_toolbar/css/print.css HTTP/1.1" 304 0
+INFO 2026-09-09 18:55:40,765 log "GET /static/debug_toolbar/js/utils.js HTTP/1.1" 304 0
+INFO 2026-09-09 18:56:02,617 middleware GET /books/ - 200 - 0.279 seconds
+INFO 2026-09-09 18:56:02,631 log "GET /books/ HTTP/1.1" 200 32395
+INFO 2026-09-09 18:56:02,649 log "GET /static/images/logo.png HTTP/1.1" 304 0
+INFO 2026-09-09 18:56:23,033 middleware GET /books/4/ - 200 - 0.012 seconds
+INFO 2026-09-09 18:56:23,045 log "GET /books/4/ HTTP/1.1" 200 17462
+ERROR 2026-09-09 18:56:28,248 log Internal Server Error: /orders/cart/add/4/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 18, in cart_add
+    cart = Cart(request)
+TypeError: Cart() takes no arguments
+INFO 2026-09-09 18:56:28,250 middleware POST /orders/cart/add/4/ - 500 - 0.024 seconds
+ERROR 2026-09-09 18:56:28,276 log "POST /orders/cart/add/4/ HTTP/1.1" 500 83454
+INFO 2026-09-09 19:03:42,663 middleware GET /orders - 404 - 0.005 seconds
+WARNING 2026-09-09 19:03:42,681 log Not Found: /orders
+WARNING 2026-09-09 19:03:42,682 log "GET /orders HTTP/1.1" 404 17921
+INFO 2026-09-09 19:03:54,555 middleware GET /orders/ - 404 - 0.005 seconds
+WARNING 2026-09-09 19:03:54,570 log Not Found: /orders/
+WARNING 2026-09-09 19:03:54,570 log "GET /orders/ HTTP/1.1" 404 19735
+INFO 2026-09-09 19:04:13,795 middleware GET /orders/cart - 301 - 0.004 seconds
+INFO 2026-09-09 19:04:13,812 log "GET /orders/cart HTTP/1.1" 301 0
+ERROR 2026-09-09 19:04:13,832 log Internal Server Error: /orders/cart/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 27, in cart_detail
+    cart = Cart(request)
+TypeError: Cart() takes no arguments
+INFO 2026-09-09 19:04:13,833 middleware GET /orders/cart/ - 500 - 0.016 seconds
+ERROR 2026-09-09 19:04:13,863 log "GET /orders/cart/ HTTP/1.1" 500 82274
+INFO 2026-09-09 19:16:33,807 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\DjangoBookStore\settings.py changed, reloading.
+INFO 2026-09-09 19:16:34,780 autoreload Watching for file changes with StatReloader
+INFO 2026-09-09 19:20:20,715 middleware GET /books/ - 200 - 0.226 seconds
+INFO 2026-09-09 19:20:20,733 log "GET /books/ HTTP/1.1" 200 32395
+INFO 2026-09-09 19:20:24,602 middleware GET /books/1/ - 200 - 0.009 seconds
+INFO 2026-09-09 19:20:24,615 log "GET /books/1/ HTTP/1.1" 200 17453
+ERROR 2026-09-09 19:20:28,267 log Internal Server Error: /orders/cart/add/1/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 18, in cart_add
+    cart = Cart(request)
+TypeError: Cart() takes no arguments
+INFO 2026-09-09 19:20:28,268 middleware POST /orders/cart/add/1/ - 500 - 0.019 seconds
+ERROR 2026-09-09 19:20:28,295 log "POST /orders/cart/add/1/ HTTP/1.1" 500 83454
+INFO 2026-09-09 19:29:47,542 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py changed, reloading.
+INFO 2026-09-09 19:29:48,251 autoreload Watching for file changes with StatReloader
+ERROR 2026-09-09 19:29:51,582 log Internal Server Error: /orders/cart/add/1/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 17, in cart_add
+    cart = Cart(request)
+TypeError: Cart() takes no arguments
+INFO 2026-09-09 19:29:51,583 middleware POST /orders/cart/add/1/ - 500 - 0.022 seconds
+ERROR 2026-09-09 19:29:51,611 log "POST /orders/cart/add/1/ HTTP/1.1" 500 83454
+INFO 2026-09-09 19:31:16,498 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\cart.py changed, reloading.
+INFO 2026-09-09 19:31:17,180 autoreload Watching for file changes with StatReloader
+INFO 2026-09-09 19:31:26,754 middleware POST /orders/cart/add/1/ - 302 - 0.203 seconds
+INFO 2026-09-09 19:31:26,772 log "POST /orders/cart/add/1/ HTTP/1.1" 302 0
+ERROR 2026-09-09 19:31:26,812 log Internal Server Error: /orders/cart/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 31, in cart_detail
+    return render(request, 'orders/cart_detail.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+INFO 2026-09-09 19:31:26,817 middleware GET /orders/cart/ - 500 - 0.035 seconds
+ERROR 2026-09-09 19:31:26,870 log "GET /orders/cart/ HTTP/1.1" 500 147480
+INFO 2026-09-09 19:31:34,679 middleware GET /books/1/ - 200 - 0.013 seconds
+INFO 2026-09-09 19:31:34,690 log "GET /books/1/ HTTP/1.1" 200 17453
+INFO 2026-09-09 19:31:36,711 middleware POST /orders/cart/add/1/ - 302 - 0.010 seconds
+INFO 2026-09-09 19:31:36,725 log "POST /orders/cart/add/1/ HTTP/1.1" 302 0
+ERROR 2026-09-09 19:31:36,756 log Internal Server Error: /orders/cart/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 31, in cart_detail
+    return render(request, 'orders/cart_detail.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+INFO 2026-09-09 19:31:36,759 middleware GET /orders/cart/ - 500 - 0.030 seconds
+ERROR 2026-09-09 19:31:36,809 log "GET /orders/cart/ HTTP/1.1" 500 147480
+ERROR 2026-09-09 19:34:41,039 log Internal Server Error: /orders/cart/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 31, in cart_detail
+    return render(request, 'orders/cart_detail.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\test\utils.py", line 114, in instrumented_test_render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\defaulttags.py", line 201, in render
+    values = list(values)
+TypeError: 'Cart' object is not iterable
+INFO 2026-09-09 19:34:41,041 middleware GET /orders/cart/ - 500 - 0.035 seconds
+ERROR 2026-09-09 19:34:41,087 log "GET /orders/cart/ HTTP/1.1" 500 155251
+INFO 2026-09-09 19:37:21,719 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\cart.py changed, reloading.
+INFO 2026-09-09 19:37:22,420 autoreload Watching for file changes with StatReloader
+INFO 2026-09-09 19:37:26,565 middleware GET /orders/cart/ - 200 - 0.283 seconds
+INFO 2026-09-09 19:37:26,582 log "GET /orders/cart/ HTTP/1.1" 200 17260
+ERROR 2026-09-09 19:37:32,935 log Internal Server Error: /orders/create/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 91, in order_create
+    return render(request, 'orders/create_order.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/create_order.html
+INFO 2026-09-09 19:37:32,937 middleware GET /orders/create/ - 500 - 0.021 seconds
+ERROR 2026-09-09 19:37:32,964 log "GET /orders/create/ HTTP/1.1" 500 100877
+ERROR 2026-09-09 19:40:58,416 log Internal Server Error: /orders/create/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 91, in order_create
+    return render(request, 'orders/create_order.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/create_order.html
+INFO 2026-09-09 19:40:58,417 middleware GET /orders/create/ - 500 - 0.019 seconds
+ERROR 2026-09-09 19:40:58,447 log "GET /orders/create/ HTTP/1.1" 500 100877
+ERROR 2026-09-09 19:43:26,647 log Internal Server Error: /orders/create/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 91, in order_create
+    return render(request, 'orders/create_order.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/create_order.html
+INFO 2026-09-09 19:43:26,648 middleware GET /orders/create/ - 500 - 0.019 seconds
+ERROR 2026-09-09 19:43:26,682 log "GET /orders/create/ HTTP/1.1" 500 101014
+ERROR 2026-09-09 19:43:29,770 log Internal Server Error: /orders/create/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 91, in order_create
+    return render(request, 'orders/create_order.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/create_order.html
+INFO 2026-09-09 19:43:29,771 middleware GET /orders/create/ - 500 - 0.018 seconds
+ERROR 2026-09-09 19:43:29,799 log "GET /orders/create/ HTTP/1.1" 500 101014
+ERROR 2026-09-09 19:48:17,075 log Internal Server Error: /orders/create/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 91, in order_create
+    return render(request, 'orders/create_order.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/create_order.html
+INFO 2026-09-09 19:48:17,076 middleware GET /orders/create/ - 500 - 0.019 seconds
+ERROR 2026-09-09 19:48:17,107 log "GET /orders/create/ HTTP/1.1" 500 101014
+INFO 2026-09-09 19:49:19,993 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\DjangoBookStore\urls.py changed, reloading.
+INFO 2026-09-09 19:49:20,725 autoreload Watching for file changes with StatReloader
+ERROR 2026-09-09 19:49:25,909 log Internal Server Error: /orders/create/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 91, in order_create
+    return render(request, 'orders/create_order.html', context)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: orders/create_order.html
+INFO 2026-09-09 19:49:25,911 middleware GET /orders/create/ - 500 - 0.231 seconds
+ERROR 2026-09-09 19:49:25,942 log "GET /orders/create/ HTTP/1.1" 500 100878
+INFO 2026-09-09 19:57:53,175 middleware GET /orders/create/ - 200 - 0.020 seconds
+INFO 2026-09-09 19:57:53,190 log "GET /orders/create/ HTTP/1.1" 200 17539
+INFO 2026-09-09 19:58:24,427 middleware POST /orders/create/ - 302 - 4.183 seconds
+INFO 2026-09-09 19:58:24,438 log "POST /orders/create/ HTTP/1.1" 302 0
+ERROR 2026-09-09 19:58:24,481 log Internal Server Error: /orders/1/pay/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 106, in order_payment
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+    ...<8 lines>...
+        metadata={'order_id': str(order.id)},
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\checkout\_session.py", line 2739, in create
+    cls._static_request(
+    ~~~~~~~~~~~~~~~~~~~^
+        "post",
+        ^^^^^^^
+        cls.class_url(),
+        ^^^^^^^^^^^^^^^^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ),
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_resource.py", line 171, in _static_request
+    return _APIRequestor._global_instance().request(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method_,
+        ^^^^^^^^
+    ...<3 lines>...
+        base_address=base_address,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 215, in request
+    rbody, rcode, rheaders = requestor.request_raw(
+                             ~~~~~~~~~~~~~~~~~~~~~^
+        method.lower(),
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 755, in request_raw
+    ) = self._args_for_request_with_retries(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<5 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 614, in _args_for_request_with_retries
+    raise error.AuthenticationError(
+    ...<5 lines>...
+    )
+stripe._error.AuthenticationError: No API key provided. (HINT: set your API key using "stripe.api_key = <API-KEY>"). You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.
+INFO 2026-09-09 19:58:24,485 middleware GET /orders/1/pay/ - 500 - 0.042 seconds
+ERROR 2026-09-09 19:58:24,521 log "GET /orders/1/pay/ HTTP/1.1" 500 112919
+ERROR 2026-09-09 20:05:16,988 log Internal Server Error: /orders/1/pay/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 106, in order_payment
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+    ...<8 lines>...
+        metadata={'order_id': str(order.id)},
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\checkout\_session.py", line 2739, in create
+    cls._static_request(
+    ~~~~~~~~~~~~~~~~~~~^
+        "post",
+        ^^^^^^^
+        cls.class_url(),
+        ^^^^^^^^^^^^^^^^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ),
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_resource.py", line 171, in _static_request
+    return _APIRequestor._global_instance().request(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method_,
+        ^^^^^^^^
+    ...<3 lines>...
+        base_address=base_address,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 215, in request
+    rbody, rcode, rheaders = requestor.request_raw(
+                             ~~~~~~~~~~~~~~~~~~~~~^
+        method.lower(),
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 755, in request_raw
+    ) = self._args_for_request_with_retries(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<5 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 614, in _args_for_request_with_retries
+    raise error.AuthenticationError(
+    ...<5 lines>...
+    )
+stripe._error.AuthenticationError: No API key provided. (HINT: set your API key using "stripe.api_key = <API-KEY>"). You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.
+INFO 2026-09-09 20:05:16,990 middleware GET /orders/1/pay/ - 500 - 0.023 seconds
+ERROR 2026-09-09 20:05:17,022 log "GET /orders/1/pay/ HTTP/1.1" 500 112919
+ERROR 2026-09-09 20:05:20,092 log Internal Server Error: /orders/1/pay/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 106, in order_payment
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+    ...<8 lines>...
+        metadata={'order_id': str(order.id)},
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\checkout\_session.py", line 2739, in create
+    cls._static_request(
+    ~~~~~~~~~~~~~~~~~~~^
+        "post",
+        ^^^^^^^
+        cls.class_url(),
+        ^^^^^^^^^^^^^^^^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ),
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_resource.py", line 171, in _static_request
+    return _APIRequestor._global_instance().request(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method_,
+        ^^^^^^^^
+    ...<3 lines>...
+        base_address=base_address,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 215, in request
+    rbody, rcode, rheaders = requestor.request_raw(
+                             ~~~~~~~~~~~~~~~~~~~~~^
+        method.lower(),
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 755, in request_raw
+    ) = self._args_for_request_with_retries(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<5 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 614, in _args_for_request_with_retries
+    raise error.AuthenticationError(
+    ...<5 lines>...
+    )
+stripe._error.AuthenticationError: No API key provided. (HINT: set your API key using "stripe.api_key = <API-KEY>"). You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.
+INFO 2026-09-09 20:05:20,094 middleware GET /orders/1/pay/ - 500 - 0.023 seconds
+ERROR 2026-09-09 20:05:20,137 log "GET /orders/1/pay/ HTTP/1.1" 500 112919
+INFO 2026-09-09 20:05:59,302 autoreload Watching for file changes with StatReloader
+INFO 2026-09-09 20:06:01,272 middleware GET / - 404 - 0.009 seconds
+WARNING 2026-09-09 20:06:01,295 log Not Found: /
+WARNING 2026-09-09 20:06:01,296 log "GET / HTTP/1.1" 404 17879
+INFO 2026-09-09 20:06:10,543 middleware GET /books/ - 200 - 0.242 seconds
+INFO 2026-09-09 20:06:10,562 log "GET /books/ HTTP/1.1" 200 32395
+INFO 2026-09-09 20:06:13,193 middleware GET /books/1/ - 200 - 0.008 seconds
+INFO 2026-09-09 20:06:13,203 log "GET /books/1/ HTTP/1.1" 200 17453
+INFO 2026-09-09 20:06:14,697 middleware POST /orders/cart/add/1/ - 302 - 0.010 seconds
+INFO 2026-09-09 20:06:14,707 log "POST /orders/cart/add/1/ HTTP/1.1" 302 0
+INFO 2026-09-09 20:06:14,718 middleware GET /orders/cart/ - 200 - 0.006 seconds
+INFO 2026-09-09 20:06:14,733 log "GET /orders/cart/ HTTP/1.1" 200 17259
+INFO 2026-09-09 20:06:16,193 middleware GET /orders/create/ - 200 - 0.012 seconds
+INFO 2026-09-09 20:06:16,207 log "GET /orders/create/ HTTP/1.1" 200 17539
+INFO 2026-09-09 20:06:38,359 middleware POST /orders/create/ - 302 - 4.135 seconds
+INFO 2026-09-09 20:06:38,373 log "POST /orders/create/ HTTP/1.1" 302 0
+ERROR 2026-09-09 20:06:38,411 log Internal Server Error: /orders/2/pay/
+Traceback (most recent call last):
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\orders\views.py", line 106, in order_payment
+    checkout_session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+    ...<8 lines>...
+        metadata={'order_id': str(order.id)},
+    )
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\checkout\_session.py", line 2739, in create
+    cls._static_request(
+    ~~~~~~~~~~~~~~~~~~~^
+        "post",
+        ^^^^^^^
+        cls.class_url(),
+        ^^^^^^^^^^^^^^^^
+        params=params,
+        ^^^^^^^^^^^^^^
+    ),
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_resource.py", line 171, in _static_request
+    return _APIRequestor._global_instance().request(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method_,
+        ^^^^^^^^
+    ...<3 lines>...
+        base_address=base_address,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 215, in request
+    rbody, rcode, rheaders = requestor.request_raw(
+                             ~~~~~~~~~~~~~~~~~~~~~^
+        method.lower(),
+        ^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 755, in request_raw
+    ) = self._args_for_request_with_retries(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<5 lines>...
+        usage=usage,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\baras\PycharmProjects\PythonProject\.venv\Lib\site-packages\stripe\_api_requestor.py", line 614, in _args_for_request_with_retries
+    raise error.AuthenticationError(
+    ...<5 lines>...
+    )
+stripe._error.AuthenticationError: No API key provided. (HINT: set your API key using "stripe.api_key = <API-KEY>"). You can generate API keys from the Stripe web interface.  See https://stripe.com/api for details, or email support@stripe.com if you have any questions.
+INFO 2026-09-09 20:06:38,414 middleware GET /orders/2/pay/ - 500 - 0.035 seconds
+ERROR 2026-09-09 20:06:38,446 log "GET /orders/2/pay/ HTTP/1.1" 500 112919
+INFO 2026-09-09 20:09:20,716 autoreload C:\Users\baras\PycharmProjects\PythonProject\DjangoBookStore\DjangoBookStore\settings.py changed, reloading.
+INFO 2026-09-09 20:09:21,425 autoreload Watching for file changes with StatReloader
+INFO 2026-09-09 20:09:28,080 middleware GET /orders/2/pay/ - 302 - 1.691 seconds
+INFO 2026-09-09 20:09:28,098 log "GET /orders/2/pay/ HTTP/1.1" 302 0
+INFO 2026-09-09 20:10:43,058 middleware GET /orders/2/success/ - 200 - 0.020 seconds
+INFO 2026-09-09 20:10:43,073 log "GET /orders/2/success/ HTTP/1.1" 200 16573
+INFO 2026-09-09 20:14:24,321 middleware GET /orders/1/pay/ - 302 - 0.944 seconds
+INFO 2026-09-09 20:14:24,333 log "GET /orders/1/pay/ HTTP/1.1" 302 0
+INFO 2026-09-09 20:14:51,412 middleware GET /orders/1/success/ - 200 - 0.012 seconds
+INFO 2026-09-09 20:14:51,427 log "GET /orders/1/success/ HTTP/1.1" 200 16573
+INFO 2026-09-09 20:15:25,883 middleware GET /books/ - 200 - 0.013 seconds
+INFO 2026-09-09 20:15:25,898 log "GET /books/ HTTP/1.1" 200 32394
+INFO 2026-09-09 20:15:28,186 middleware GET /books/2/ - 200 - 0.007 seconds
+INFO 2026-09-09 20:15:28,196 log "GET /books/2/ HTTP/1.1" 200 17437
+INFO 2026-09-09 20:15:29,894 middleware POST /orders/cart/add/2/ - 302 - 0.016 seconds
+INFO 2026-09-09 20:15:29,906 log "POST /orders/cart/add/2/ HTTP/1.1" 302 0
+INFO 2026-09-09 20:15:29,917 middleware GET /orders/cart/ - 200 - 0.007 seconds
+INFO 2026-09-09 20:15:29,927 log "GET /orders/cart/ HTTP/1.1" 200 17249
+INFO 2026-09-09 20:15:33,697 middleware GET /orders/create/ - 200 - 0.013 seconds
+INFO 2026-09-09 20:15:33,709 log "GET /orders/create/ HTTP/1.1" 200 17539
+INFO 2026-09-09 20:15:48,576 middleware POST /orders/create/ - 302 - 4.169 seconds
+INFO 2026-09-09 20:15:48,589 log "POST /orders/create/ HTTP/1.1" 302 0
+INFO 2026-09-09 20:15:49,408 middleware GET /orders/3/pay/ - 302 - 0.813 seconds
+INFO 2026-09-09 20:15:49,417 log "GET /orders/3/pay/ HTTP/1.1" 302 0
+INFO 2026-09-09 20:16:30,533 middleware GET /orders/3/success/ - 200 - 0.012 seconds
+INFO 2026-09-09 20:16:30,547 log "GET /orders/3/success/ HTTP/1.1" 200 16573

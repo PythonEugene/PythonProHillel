@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
 
 from django.conf.global_settings import STATICFILES_DIRS, LOGIN_REDIRECT_URL, STATIC_ROOT
+
+# from commerce.commerce.settings import CART_SESSION_ID
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +47,7 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'users.apps.UsersConfig',
     'debug_toolbar',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
@@ -190,3 +194,11 @@ LOGGING = {
         },
     },
 }
+
+
+
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
+STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET', default='')
+DEFAULT_FROM_EMAIL = 'noreply@bookstore.local'
+CART_SESSION_ID = 'cart'

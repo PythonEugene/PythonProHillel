@@ -1,0 +1,12 @@
+{% extends "books/base.html" %}
+{% block content %}
+<h2>Оформлення замовлення</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Перейти до оплати</button>
+</form>
+
+<h4>Разом: {{ total_price }} $</h4>
+{% endblock %}

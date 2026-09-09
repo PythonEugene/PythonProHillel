@@ -1,0 +1,33 @@
+{% extends "books/base.html" %}
+{% block content %}
+<h2>Кошик</h2>
+<table class="table">
+    <thead>
+        <tr><th>Книга</th><th>Ціна</th><th>Кількість</th><th>Сума</th><th></th></tr>
+    </thead>
+    <tbody>
+    {% for item in cart %}
+        <tr>
+            <td>{{ item.book.title }}</td>
+            <td>{{ item.price }} $</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.total_price }} $</td>
+            <td>
+                <form action="{% url 'orders:cart_remove' item.book.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-danger">Видалити</button>
+                </form>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5">Кошик порожній</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Разом: {{ total_price }} $</h4>
+
+{% if cart.cart %}
+    <a href="{% url 'orders:order_create' %}" class="btn btn-primary">Оформити замовлення</a>
+{% endif %}
+{% endblock %}

@@ -28,8 +28,9 @@ def test(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', test, name='test'),
-    path('books/', include('books.urls')),
+    path('books/', include('books.urls', 'books')),
     path('users/', include('users.urls')),
+    path('orders/', include('orders.urls')),
 ]
 
 if settings.DEBUG:
