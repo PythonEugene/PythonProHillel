@@ -29,8 +29,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', test, name='test'),
     path('books/', include('books.urls', 'books')),
-    path('users/', include('users.urls')),
+    path('users/', include(('users.urls', 'users'), namespace='users')),
+    path('users/', include(('users.urls', 'user'), namespace='user')),
     path('orders/', include('orders.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 if settings.DEBUG:

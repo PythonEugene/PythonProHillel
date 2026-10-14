@@ -29,7 +29,7 @@ class Order(models.Model):
     class Meta:
         ordering = ['-created_at']
 
-    def str(self):
+    def __str__(self):
         return f'Order {self.id}'
 
     def get_total_cost(self):

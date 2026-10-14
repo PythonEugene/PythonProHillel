@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from books.models import Book
 from .models import Order, OrderItem
 from .cart import Cart
@@ -119,7 +119,7 @@ def order_payment(request, order_id):
     order.stripe_checkout_id = checkout_session.id
     order.save(update_fields=['stripe_checkout_id'])
 
-    return redirect(checkout_session.url, code=303)
+    return HttpResponseRedirect(checkout_session.url, status=303)
 
 
 def order_success(request, order_id):

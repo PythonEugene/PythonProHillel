@@ -39,11 +39,12 @@ class BookDetailView(DetailView):
     context_object_name = 'book'
 
 
-class BookCreateView(CreateView):
+class BookCreateView(PermissionRequiredMixin, CreateView):
     model = Book
     template_name = 'books/book_form.html'
     fields = ['title', 'author', 'price', 'description', 'category', 'stock']
     success_url = reverse_lazy('books:list')
+    permission_required = 'books.add_book'
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -51,14 +52,15 @@ class BookCreateView(CreateView):
         return response
 
 
-class BookUpdateView(UpdateView):
+class BookUpdateView(PermissionRequiredMixin, UpdateView):
     model = Book
     template_name = 'books/book_form.html'
     fields = ['title', 'author', 'price', 'description', 'category', 'stock']
     success_url = reverse_lazy('books:list')
+    permission_required = 'books.change_book'
 
 
-class BookDeleteView(DeleteView, PermissionRequiredMixin):
+class BookDeleteView(PermissionRequiredMixin, DeleteView):
     model = Book
     template_name = 'books/book_confirm_delete.html'
     success_url = reverse_lazy('books:list')

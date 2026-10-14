@@ -6,6 +6,7 @@ from django.utils import timezone
 SUPPORTED_LANGUAGES = [
     ('uk', 'Ukrainian'),
     ('en', 'English'),
+    ('pl', 'Polski'),
 ]
 
 

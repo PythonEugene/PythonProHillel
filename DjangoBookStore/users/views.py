@@ -47,7 +47,7 @@ class ManagerUserPermissionsView(LoginRequiredMixin, UserPassesTestMixin, FormVi
         return context
 
     def get_success_url(self) -> str:
-        return reverse_lazy('manage_permissions', kwargs={'user_id': self.kwargs['user_id']})
+        return reverse_lazy('users:manage_permissions', kwargs={'user_id': self.kwargs['user_id']})
 
     def form_valid(self, form: Any):
         selected_permissions = form.cleaned_data.get('permissions', [])
