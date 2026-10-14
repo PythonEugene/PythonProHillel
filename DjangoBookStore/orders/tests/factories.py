@@ -10,6 +10,7 @@ class OrderFactory(factory.django.DjangoModelFactory):
     email = factory.Sequence(lambda n: f"user{n}@test.com")
     phone_number = "+380501234567"
     address = "Kyiv, Khreshchatyk 1"
+
 class OrderItemFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = OrderItem

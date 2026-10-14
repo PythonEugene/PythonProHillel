@@ -6,7 +6,7 @@
 {% block content %}
 <h1 class="mb-4">{% translate "Delete book" %}</h1>
 
-<p>{% blocktranslate with title=book.title %} Are you sure you want to delete "<strong>{{ book.title }}</strong>"?{% endblocktrans %}</p>
+<p>{% blocktranslate with title=book.title %} Are you sure you want to delete "<strong>{{ book.title }}</strong>"?{% endblocktranslate %}</p>
 
 <form method="post">
     {% csrf_token %}

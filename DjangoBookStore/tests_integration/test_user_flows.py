@@ -136,10 +136,14 @@ def test_delete_with_permission(auth_client, user):
 
 
 @patch("orders.views.stripe.checkout.Session.create")
-def test_full_purchase_flow(mock_create, auth_client, user):
+@patch("orders.views.stripe.checkout.Session.retrieve")
+def test_full_purchase_flow(mock_retrieve, mock_create, auth_client, user):
     mock_create.return_value = MagicMock(id="cs_1", url="https://stripe.test/pay")
+    mock_retrieve.return_value=MagicMock(payment_status='paid')
+
     book = BookFactory(price=Decimal("10.00"))
     add_to_cart(auth_client, book, 2)
+
     assert auth_client.get(reverse("orders:cart_detail")).status_code == 200
 
     r = auth_client.post(reverse("orders:order_create"), ORDER)

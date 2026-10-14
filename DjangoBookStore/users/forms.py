@@ -21,10 +21,11 @@ class UserPermissionForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.user = user
         self.manager = manager
-        permissions = Permission.objects.all()
+        permissions = Permission.objects.select_related("content_type").order_by(
+            "content_type__app_label", "codename")
         self.fields['permissions'].choices = [
             (perm.id, f'{perm.content_type.app_label}.{perm.codename} - {perm.name}')
-            for perm in permissions.order_by('content_type__app_label', 'codename')
+            for perm in permissions
         ]
         can_manage = self.manager.has_perm('users.can_set_user_permissions') if self.manager else False
         if self.user:
