@@ -33,6 +33,7 @@ urlpatterns = [
     path('users/', include(('users.urls', 'user'), namespace='user')),
     path('orders/', include('orders.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('api/', include('api.urls')),
 ]
 
 if settings.DEBUG:

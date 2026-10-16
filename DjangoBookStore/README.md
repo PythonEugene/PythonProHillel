@@ -97,3 +97,34 @@ What AI got wrong or needed checking: some advice had to be rejected
 (for example, forbidding managers to edit their own permissions was considered
 out of scope), and generated tests needed fixes (field names, order of mock
 arguments, fixtures). AI output was never accepted without running the tests.
+
+## REST API
+
+Built with Django REST Framework. Interactive documentation (Swagger):
+`/api/docs/`, ReDoc: API
+
+Built wit OpenAPI schema:lt with Django R
+
+| Endpoint | Description | Access |
+|---|---|---|
+|ctive documenta| Books (filters, search, ordering) | read: everyone, write: admin |
+|on (Swagger):
+`/api/| Categories with books count | read: everyone, write: admin |
+|entation (Swagge| Orders with nested items,ngo REST Framework. In| authenticated, owner only |
+|REST Framework| Session cart:ilt wit## REST AP## REST A| everyone |
+|uilt with Django REST F| Registration | everyone |
+|o REST Framewor## REST API
+
+Built with## REST API
+
+Built wit| JWT | everyone |
+|ith Django REST Fr| Current user | authenticated |
+
+- Pagination: 20 items per page (`?page=2`)
+- Filters:i/docs/`, ReDoc: `/api/redoc/`, OpenAPI schema: `/api/schema## REST API
+## REST API
+
+Built w- Throttling: 100 requests/hour for anonymous, 1000/hour for authenticated users
+- Authorization: ReDoc: `/api/redoc/`, OpenAPI schema: `- CORS: allowed origins are set inT Framework. Interactive- Permissions:uilt with Django REST## REST API
+
+Built wi(see `api/permissions.py`)

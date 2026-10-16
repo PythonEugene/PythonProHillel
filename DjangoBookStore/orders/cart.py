@@ -44,6 +44,8 @@ class Cart:
         books = Book.objects.filter(id__in=self.cart.keys())
         books_map = {str(b.id): b for b in books}
         for book_id, item in self.cart.items():
+            if book_id not in books_map:
+                continue
             item = item.copy()
             item['book'] = books_map[book_id]
             item['total_price'] = Decimal(item['price']) * item['quantity']
