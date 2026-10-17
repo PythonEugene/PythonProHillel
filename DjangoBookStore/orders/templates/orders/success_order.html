@@ -1,8 +1,10 @@
 {% extends "books/base.html" %}
 {% block content %}
-<h2>Дякуємо за замовлення!</h2>
-<p>Номер замовлення: #{{ order.id }}</p>
-<p>Статус: {{ order.get_status_display }}</p>
-<p>Сума: {{ order.total_price }} $</p>
-<a href="{% url 'books:list' %}">Повернутися до каталогу</a>
+{% load i18n %}
+
+<h2>{% translate "Thank you for your order" %}</h2>
+<p>{% translate "Order number:" %} #{{ order.id }}</p>
+<p>{% translate "Status:" %} {{ order.get_status_display }}</p>
+<p>{% translate "Amount" %} {{ order.total_price }} $</p>
+<a href="{% url 'books:list' %}">{% translate "Back to catalog" %}</a>
 {% endblock %}

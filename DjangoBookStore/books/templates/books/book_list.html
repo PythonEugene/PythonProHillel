@@ -1,5 +1,7 @@
- {% extends 'books/base.html' %}
- {% load i18n %}
+{% extends 'books/base.html' %}
+{% load i18n %}
+{% load cache %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}{% translate "Book list" %}{% endblock %}
 
@@ -12,6 +14,7 @@
                value="{{ search_query }}">
     </div>
     <div class="col-md-4">
+        {% cache 300 categories_select LANGUAGE_CODE current_category categories_version %}
         <select name="category" class="form-select">
             <option value="">{% translate "All categories" %}</option>
             {% for cat in categories %}
@@ -20,6 +23,7 @@
                 </option>
             {% endfor %}
         </select>
+        {% endcache %}
     </div>
     <div class="col-md-2">
         <button type="submit" class="btn btn-primary w-100">{% translate "Find" %}</button>

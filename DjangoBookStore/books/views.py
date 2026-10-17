@@ -4,10 +4,14 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from categories.models import Category
 from .models import Book
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+from .cache_keys import book_cache_key, get_categories_version
 
 logger = logging.getLogger('books')
 
-
+@method_decorator(cache_page(60, cache='pages'), name='dispatch')
 class BookListView(ListView):
     """Paginated catalog of books (15 per page).
     Supported GET parameters:
@@ -37,14 +41,23 @@ class BookListView(ListView):
         context['categories'] = Category.objects.all()
         context['current_category'] = self.request.GET.get('category', '')
         context['search_query'] = self.request.GET.get('q', '')
+        context['categories_version'] = get_categories_version()
         return context
 
 
 class BookDetailView(DetailView):
-    """Detail page of a single book. Returns 404 if the book does not exist."""
-    model = Book
+    """Detail page of a book; the book object is cached for 15 minutes."""
+    queryset = Book.objects.select_related('category')
     template_name = 'books/book_detail.html'
     context_object_name = 'book'
+
+    def get_object(self, queryset=None):
+        key = book_cache_key(self.kwargs['pk'])
+        book = cache.get(key)
+        if book is None:
+            book = super().get_object(queryset)  # несуществующая книга: 404
+            cache.set(key, book, 60 * 15)
+        return book
 
 
 class BookCreateView(PermissionRequiredMixin, CreateView):

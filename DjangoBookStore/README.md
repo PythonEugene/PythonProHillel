@@ -61,7 +61,7 @@ The project expects these values in settings.py (or environment variables):
 
 ## Translations
 
-django-admin makemessages -l uk -l en
+django-admin makemessages -l uk -l en -l pl
 django-admin compilemessages
 
 ## Testing
@@ -74,6 +74,53 @@ configuration is in .coveragerc and pytest.ini.
 • Test data is created with factories (books/tests/factories.py,
 orders/tests/factories.py, users/tests/factories.py)
 
+## Architecture and infrastructure
+
+browser -> NGINX (:80) -+-- /static/  -> files from a shared volume
+                        +-- other     -> Gunicorn (web:8000) -> Django
+Django <-> PostgreSQL     Django cache + Celery broker -> Redis
+Celery worker / Celery Beat -> Redis (broker and results) + PostgreSQL
+
+| Service | Purpose |
+|web| Django under Gunicorn (3 workers), runs migrations and collectstatic on start
+|nginx| Reverse proxy, serves static files
+|db| PostgreSQL 16
+|redis| Cache, Celery broker and result backend
+|celery| Worker for background tasks
+|celery-beat| Scheduler for periodic tasks
+
+browser | Scheduler for periodic tasks |
+
+### Run
+bash 
+docker compose up -d --build 
+docker compose exec web python manage.py createsuperuser 
+docker compose exec web python manage.py generate_books
+The site is available at `http://localhost
+
+### Caching (Redis)
+
+- View cache: catalog page (`cache_page`, 60 s, separate cache `pages`)
+- Template fragment: categories select (300 s, key includes language, current
+  category and a version number)
+- Low-level cache: book detail object (`book:<id>`, 15 min)
+- Invalidation:broker and results) clears the book cache and catalog pages when
+  a book or category is saved or deleted (after the transaction commits).
+  The categories fragment is invalidated by changing its version key.
+
+### Background tasks (Celery)
+
+| Task | Description | Schedule |
+|---|---|---|
+| `orders.tasks.send_order_confirmation` | Order confirmation email, retried on mail errors | on order creation |
+| `orders.tasks.generate_daily_report` | CSV report of paid orders, saved to `reports/` | daily 23:55 |
+| `users.tasks.clear_expired_sessions` | Removes expired sessions | daily 03:00 |
+
+Without `REDIS_URL` (local run, tests) tasks are executed synchronously.
+
+### Monitoring (Sentry)
+
+Errors from Django and Celery are sent to Sentry when SENTRY_DSN is set and SENTRY_ENABLED=1 (enabled in docker-compose.yml).
 ## AI Usage
 
 AI (Claude) was used in this project for three things.

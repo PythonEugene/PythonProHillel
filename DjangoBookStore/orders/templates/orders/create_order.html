@@ -1,12 +1,14 @@
 {% extends "books/base.html" %}
 {% block content %}
-<h2>Оформлення замовлення</h2>
+{% load i18n %}
+
+<h2>{% translate "Placing the order" %}</h2>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Перейти до оплати</button>
+    <button type="submit" class="btn btn-success">{% translate "Proceed to Payment" %}</button>
 </form>
 
-<h4>Разом: {{ total_price }} $</h4>
+<h4>{% translate "Total:" %} {{ total_price }} $</h4>
 {% endblock %}

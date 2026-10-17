@@ -15,10 +15,13 @@ from decouple import config
 import os
 from django.utils.translation import gettext_lazy as _
 from datetime import timedelta
-
+from decouple import config, Csv
 from django.conf.global_settings import STATICFILES_DIRS, LOGIN_REDIRECT_URL, STATIC_ROOT
+import sentry_sdk
+from sentry_sdk.integrations.celery import CeleryIntegration
+from sentry_sdk.integrations.django import DjangoIntegration
 
-# from commerce.commerce.settings import CART_SESSION_ID
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +36,30 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config(
+    'ALLOWED_HOSTS',
+    default = 'localhost, 127.0.0.1',
+    cast=Csv()
+)
+
+if config("USE_POSTGRESQL", default=False, cast=bool):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': config('DB_PORT'),
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Application definition
@@ -224,7 +250,7 @@ STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET', default='')
 DEFAULT_FROM_EMAIL = 'noreply@bookstore.local'
 CART_SESSION_ID = 'cart'
 
-from datetime import timedelta
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -277,3 +303,64 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
+
+
+REDIS_URL = config('REDIS_URL', default='')
+
+if REDIS_URL:
+    CACHES = {
+        # общий кеш: детали книг, фрагменты шаблонов
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': f'{REDIS_URL}/1',
+            'KEY_PREFIX': 'bookstore',
+        },
+        # отдельный кеш для целых страниц: его можно сбросить целиком
+        'pages': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': f'{REDIS_URL}/2',
+            'KEY_PREFIX': 'bookstore',
+        },
+    }
+else:
+    CACHES = {
+        'default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+                    'LOCATION': 'default'},
+        'pages': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+                  'LOCATION': 'pages'},
+    }
+
+EMAIL_BACKEND = config(
+    'EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='shop@bookstore.local')
+
+from celery.schedules import crontab  # noqa: E402
+CELERY_BROKER_URL = f'{REDIS_URL}/0' if REDIS_URL else 'memory://'
+CELERY_RESULT_BACKEND = f'{REDIS_URL}/0' if REDIS_URL else 'cache+memory://'
+CELERY_TASK_ALWAYS_EAGER = not REDIS_URL   # без Redis задачи выполняются сразу, в том же процессе CELERY_TASK_EAGER_PROPAGATES = True CELERY_ACCEPT_CONTENT = ['json'] CELERY_TASK_SERIALIZER = 'json' CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_EAGER_PROPAGATES = True
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_BEAT_SCHEDULE = {
+    'daily-sales-report': {
+        'task': 'orders.tasks.generate_daily_report',
+        # 'schedule': 60,
+        'schedule': crontab(hour=23, minute=55),
+    },
+    'clear-expired-sessions': {
+        'task': 'users.tasks.clear_expired_sessions',
+        'schedule': crontab(hour=3, minute=0),
+    },
+}
+REPORTS_DIR = BASE_DIR / 'reports'
+
+SENTRY_DSN = config('SENTRY_DSN', default='')
+if SENTRY_DSN and config('SENTRY_ENABLED', default=False, cast=bool):
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration(), CeleryIntegration()],
+        environment=config('SENTRY_ENVIRONMENT', default='development'),
+        traces_sample_rate=0.1,      # 10% запросов попадают в мониторинг производительности
+        send_default_pii=False,      # не отправлять персональные данные (почта, IP)
+    )

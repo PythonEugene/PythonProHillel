@@ -2,7 +2,7 @@ import pytest
 from users.models import CustomUser
 from django.core.cache import cache
 from rest_framework.test import APIClient
-
+from django.core.cache import caches
 from users.models import CustomUser
 from users.tests.factories import UserFactory
 
@@ -20,9 +20,10 @@ def auth_client(client, user):
 
 
 @pytest.fixture(autouse=True)
-def clear_throttle_cache():
+def clear_caches():
     """Throttle counters live in the cache; reset them before every test."""
-    cache.clear()
+    for alias in caches:
+        caches[alias].clear()
 
 
 @pytest.fixture
@@ -57,3 +58,8 @@ def admin_api(admin_user):
     client = APIClient()
     client.force_authenticate(user=admin_user)
     return client
+
+@pytest.fixture(autouse=True)
+def celery_eager():
+    from DjangoBookStore.celery import app
+    app.conf.task_always_eager = True

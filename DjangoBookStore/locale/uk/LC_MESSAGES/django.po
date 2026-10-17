@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-14 13:06+0200\n"
+"POT-Creation-Date: 2026-10-17 15:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr "Назва"
 msgid "Author"
 msgstr "Автор"
 
-#: .\books\models.py:8
+#: .\books\models.py:8 .\orders\templates\orders\cart_detail.html:8
 msgid "Price"
 msgstr "Цiна"
 
@@ -45,11 +45,7 @@ msgstr "В наявностi"
 msgid "Category"
 msgstr "Категорiя"
 
-#: .\books\models.py:15
-msgid "books"
-msgstr "книги"
-
-#: .\books\models.py:18
+#: .\books\models.py:18 .\orders\templates\orders\cart_detail.html:8
 msgid "Book"
 msgstr "Книга"
 
@@ -72,6 +68,7 @@ msgid "Add book"
 msgstr "Додати книгу"
 
 #: .\books\templates\books\base.html:22
+#: .\orders\templates\orders\cart_detail.html:5
 msgid "Cart"
 msgstr "Кошик"
 
@@ -129,16 +126,18 @@ msgid "Out of stock"
 msgstr "Нема в наявностi"
 
 #: .\books\templates\books\book_detail.html:29
+#: .\orders\templates\orders\success_order.html:9
 msgid "Back to catalog"
 msgstr "Повернутися до каталогу"
 
 #: .\books\templates\books\book_detail.html:30
-#: .\books\templates\books\book_list.html:43
+#: .\books\templates\books\book_list.html:47
 msgid "Edit"
 msgstr "Редагувати"
 
 #: .\books\templates\books\book_detail.html:31
-#: .\books\templates\books\book_list.html:45
+#: .\books\templates\books\book_list.html:49
+#: .\orders\templates\orders\cart_detail.html:20
 msgid "Delete"
 msgstr "Видалити"
 
@@ -151,47 +150,91 @@ msgstr "Редагувати книгу"
 msgid "Save"
 msgstr "Зберегти"
 
-#: .\books\templates\books\book_list.html:4
+#: .\books\templates\books\book_list.html:6
 msgid "Book list"
 msgstr "Список книг"
 
-#: .\books\templates\books\book_list.html:7
+#: .\books\templates\books\book_list.html:9
 msgid "Book catalog"
 msgstr "Каталог Книг"
 
-#: .\books\templates\books\book_list.html:11
+#: .\books\templates\books\book_list.html:13
 msgid "Search by name"
 msgstr "Пошук за ім'ям"
 
-#: .\books\templates\books\book_list.html:16
+#: .\books\templates\books\book_list.html:19
 msgid "All categories"
 msgstr "Всi категорії"
 
-#: .\books\templates\books\book_list.html:25
+#: .\books\templates\books\book_list.html:29
 msgid "Find"
 msgstr "Знайти"
 
-#: .\books\templates\books\book_list.html:41
+#: .\books\templates\books\book_list.html:45
 msgid "More details"
 msgstr "Бiльш детально"
 
-#: .\books\templates\books\book_list.html:52
+#: .\books\templates\books\book_list.html:56
 msgid "No books found"
 msgstr "Книги не знайдено"
 
-#: .\books\templates\books\book_list.html:61
+#: .\books\templates\books\book_list.html:65
 msgid "Previous"
 msgstr "Попереднiй"
 
-#: .\books\templates\books\book_list.html:67
+#: .\books\templates\books\book_list.html:71
 #, python-format
 msgid "Page %(current)s of %(total)s"
 msgstr "Сторiнка %(current)s з %(total)s"
 
-#: .\books\templates\books\book_list.html:73
+#: .\books\templates\books\book_list.html:77
 msgid "Next"
 msgstr "Наступний"
 
-#: .\templates\base_language.html:20
-msgid "Set Language"
-msgstr "Змiнити мову"
+#: .\orders\templates\orders\cart_detail.html:8
+msgid "Quantity"
+msgstr "Кiлькiсть"
+
+#: .\orders\templates\orders\cart_detail.html:8
+#: .\orders\templates\orders\success_order.html:8
+msgid "Amount"
+msgstr "Сума"
+
+#: .\orders\templates\orders\cart_detail.html:25
+msgid "Cart is empty"
+msgstr "Кошик порожнiй"
+
+#: .\orders\templates\orders\cart_detail.html:30
+#: .\orders\templates\orders\create_order.html:13
+msgid "Total:"
+msgstr "Разом:"
+
+#: .\orders\templates\orders\cart_detail.html:33
+msgid "Place the order"
+msgstr "Оформити замовлення"
+
+#: .\orders\templates\orders\create_order.html:5
+msgid "Placing the order"
+msgstr "Оформлення замовлення"
+
+#: .\orders\templates\orders\create_order.html:10
+msgid "Proceed to Payment"
+msgstr "Перейти до оплати"
+
+#: .\orders\templates\orders\success_order.html:5
+msgid "Thank you for your order"
+msgstr "Дякуємо за замовлення"
+
+#: .\orders\templates\orders\success_order.html:6
+msgid "Order number:"
+msgstr "Номер замовлення"
+
+#: .\orders\templates\orders\success_order.html:7
+msgid "Status:"
+msgstr "Статус"
+
+#~ msgid "books"
+#~ msgstr "книги"
+
+#~ msgid "Set Language"
+#~ msgstr "Змiнити мову"

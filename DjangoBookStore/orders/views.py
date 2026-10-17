@@ -1,7 +1,7 @@
 import logging
 import stripe
 from django.conf import settings
-from django.core.mail import send_mail
+from .tasks import send_order_confirmation
 from django.db import transaction
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
@@ -104,14 +104,7 @@ def order_create(request):
                     )
 
             cart.clear()
-
-            send_mail(
-                subject=f'Замовлення №{order.id} створено',
-                message=f'Дякуємо! Сума замовлення: {order.total_price} USD.',
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[order.email],
-                fail_silently=True,
-            )
+            send_order_confirmation.delay(order.id)
 
             return redirect('orders:order_payment', order_id=order.id)
     else:
