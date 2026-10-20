@@ -31,8 +31,9 @@ def test_viewer_cannot_change_permissions(client):
     target = UserFactory()
     perm = Permission.objects.get(codename="add_book")
     client.force_login(make_manager("can_see_user_permissions"))
-    r = client.post(reverse("users:manage_permissions", args=[target.id]),
-                    {"permissions": [perm.id]})
+    r = client.post(
+        reverse("users:manage_permissions", args=[target.id]), {"permissions": [perm.id]}
+    )
     assert r.status_code == 403
     assert target.user_permissions.count() == 0
 
@@ -44,8 +45,7 @@ def test_permissions_are_replaced_not_added(client):
     new = Permission.objects.get(codename="change_book")
     target.user_permissions.add(old)
     client.force_login(make_manager("can_see_user_permissions", "can_set_user_permissions"))
-    client.post(reverse("users:manage_permissions", args=[target.id]),
-                {"permissions": [new.id]})
+    client.post(reverse("users:manage_permissions", args=[target.id]), {"permissions": [new.id]})
     assert list(target.user_permissions.all()) == [new]
 
 

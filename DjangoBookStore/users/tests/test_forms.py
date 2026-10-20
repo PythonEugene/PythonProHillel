@@ -3,9 +3,12 @@ from django.contrib.auth.models import Permission
 from users.forms import CustomUserCreationForm, UserPermissionForm
 
 VALID = {
-    "email": "new@test.com", "phone_number": "+380502222222",
-    "first_name": "Ivan", "last_name": "P",
-    "password1": "Str0ngPass!234", "password2": "Str0ngPass!234",
+    "email": "new@test.com",
+    "phone_number": "+380502222222",
+    "first_name": "Ivan",
+    "last_name": "P",
+    "password1": "Str0ngPass!234",
+    "password2": "Str0ngPass!234",
 }
 
 

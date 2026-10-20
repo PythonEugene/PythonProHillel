@@ -10,17 +10,18 @@ pytestmark = pytest.mark.django_db
 
 # Generated with AI, reviewed and modified
 def test_book_detail_served_from_cache_until_invalidated(
-        client, django_capture_on_commit_callbacks):
+    client, django_capture_on_commit_callbacks
+):
     book = BookFactory(title='Old title')
     url = reverse('books:detail', args=[book.pk])
     assert 'Old title' in client.get(url).content.decode()
 
     Book.objects.filter(pk=book.pk).update(title='New title')  # update() не шлёт сигнал
-    assert 'Old title' in client.get(url).content.decode()      # ответ из кеша
+    assert 'Old title' in client.get(url).content.decode()  # ответ из кеша
 
     with django_capture_on_commit_callbacks(execute=True):
         book.title = 'New title'
-        book.save()                                              # сигнал сбрасывает кеш
+        book.save()  # сигнал сбрасывает кеш
     assert 'New title' in client.get(url).content.decode()
 
 

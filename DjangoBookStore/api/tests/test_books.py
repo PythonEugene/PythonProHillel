@@ -84,8 +84,13 @@ def test_anonymous_cannot_create_book(api_client):
 # Generated with AI, reviewed and modified
 def test_regular_user_cannot_create_book(user_api):
     category = CategoryFactory()
-    payload = {'title': 'X', 'author': 'Y', 'price': '10.00',
-               'stock': 1, 'category_id': category.id}
+    payload = {
+        'title': 'X',
+        'author': 'Y',
+        'price': '10.00',
+        'stock': 1,
+        'category_id': category.id,
+    }
     r = user_api.post(reverse(LIST), payload, format='json')
     assert r.status_code == 403
     assert not Book.objects.exists()
@@ -94,8 +99,13 @@ def test_regular_user_cannot_create_book(user_api):
 # Generated with AI, reviewed and modified
 def test_admin_can_create_book(admin_api):
     category = CategoryFactory()
-    payload = {'title': 'Kobzar', 'author': 'Shevchenko', 'price': '12.50',
-               'stock': 3, 'category_id': category.id}
+    payload = {
+        'title': 'Kobzar',
+        'author': 'Shevchenko',
+        'price': '12.50',
+        'stock': 3,
+        'category_id': category.id,
+    }
     r = admin_api.post(reverse(LIST), payload, format='json')
     assert r.status_code == 201
     assert r.data['category']['id'] == category.id
@@ -105,8 +115,7 @@ def test_admin_can_create_book(admin_api):
 # Generated with AI, reviewed and modified
 def test_create_book_with_non_positive_price_is_rejected(admin_api):
     category = CategoryFactory()
-    payload = {'title': 'X', 'author': 'Y', 'price': '0',
-               'stock': 1, 'category_id': category.id}
+    payload = {'title': 'X', 'author': 'Y', 'price': '0', 'stock': 1, 'category_id': category.id}
     r = admin_api.post(reverse(LIST), payload, format='json')
     assert r.status_code == 400
     assert 'price' in r.data

@@ -11,6 +11,7 @@ from .cache_keys import book_cache_key, get_categories_version
 
 logger = logging.getLogger('books')
 
+
 @method_decorator(cache_page(60, cache='pages'), name='dispatch')
 class BookListView(ListView):
     """Paginated catalog of books (15 per page).
@@ -18,6 +19,7 @@ class BookListView(ListView):
     category: slug of a category to filter by.
     q: case-insensitive search in the book title.
     """
+
     model = Book
     template_name = 'books/book_list.html'
     context_object_name = 'books'
@@ -47,6 +49,7 @@ class BookListView(ListView):
 
 class BookDetailView(DetailView):
     """Detail page of a book; the book object is cached for 15 minutes."""
+
     queryset = Book.objects.select_related('category')
     template_name = 'books/book_detail.html'
     context_object_name = 'book'
@@ -65,6 +68,7 @@ class BookCreateView(PermissionRequiredMixin, CreateView):
     Requires theitle__icontains=sepermission. Anonymous users are redirected
     to the login page, users without the permission get 403.
     """
+
     model = Book
     template_name = 'books/book_form.html'
     fields = ['title', 'author', 'price', 'description', 'category', 'stock']
@@ -82,6 +86,7 @@ class BookUpdateView(PermissionRequiredMixin, UpdateView):
     """Form for editing an existing book.
     Requires the books.change_book permission.
     """
+
     model = Book
     template_name = 'books/book_form.html'
     fields = ['title', 'author', 'price', 'description', 'category', 'stock']
@@ -94,6 +99,7 @@ class BookDeleteView(PermissionRequiredMixin, DeleteView):
     Requires the books.delete_book permission. A book that is part of an
     order cannot be deleted (OrderItem uses on_delete=PROTECT).
     """
+
     model = Book
     template_name = 'books/book_confirm_delete.html'
     success_url = reverse_lazy('books:list')

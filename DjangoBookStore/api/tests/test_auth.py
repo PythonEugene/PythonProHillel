@@ -10,15 +10,15 @@ REGISTER = {
     'phone_number': '+380509999999',
     'first_name': 'Api',
     'password': 'Str0ngPass!234',
-    }
+}
 
 
 def obtain_tokens(client, user):
     """Log in through the real JWT endpoint (password of the `user` fixture)."""
     return client.post(
-    reverse('api:token_obtain_pair'),
-    {'phone_number': user.phone_number, 'password': 'pass12345'},
-    format='json',
+        reverse('api:token_obtain_pair'),
+        {'phone_number': user.phone_number, 'password': 'pass12345'},
+        format='json',
     )
 
 
@@ -29,7 +29,7 @@ def test_register_creates_user_without_exposing_password(api_client):
     assert 'password' not in r.data
     created = CustomUser.objects.get(email=REGISTER['email'])
     assert created.check_password(REGISTER['password'])
-    assert created.password != REGISTER['password'] # stored as a hash
+    assert created.password != REGISTER['password']  # stored as a hash
 
 
 # Generated with AI, reviewed and modified
@@ -44,7 +44,8 @@ def test_register_duplicate_user_is_rejected(api_client):
 # Generated with AI, reviewed and modified
 def test_register_weak_password_is_rejected(api_client):
     r = api_client.post(
-    reverse('api:register'), {**REGISTER, 'password': '12345678'}, format='json')
+        reverse('api:register'), {**REGISTER, 'password': '12345678'}, format='json'
+    )
     assert r.status_code == 400
     assert 'password' in r.data
 
@@ -67,9 +68,9 @@ def test_token_obtain_returns_access_and_refresh(api_client, user):
 # Generated with AI, reviewed and modified
 def test_token_obtain_wrong_password(api_client, user):
     r = api_client.post(
-    reverse('api:token_obtain_pair'),
-    {'phone_number': user.phone_number, 'password': 'wrong'},
-    format='json',
+        reverse('api:token_obtain_pair'),
+        {'phone_number': user.phone_number, 'password': 'wrong'},
+        format='json',
     )
     assert r.status_code == 401
 

@@ -12,8 +12,9 @@ class Book(models.Model):
         'categories.Category',
         on_delete=models.CASCADE,
         verbose_name=_("Category"),
-        related_name="books"
+        related_name="books",
     )
+
     class Meta:
         verbose_name = _("Book")
         verbose_name_plural = _("Books")

@@ -27,9 +27,12 @@ def generate_daily_report():
     today = timezone.localdate()
     paid = Order.objects.filter(status=Order.OrderStatus.PAID, created_at__date=today)
     totals = paid.aggregate(orders=Count('id'), revenue=Sum('total_price'))
-    top_books = (OrderItem.objects.filter(order__in=paid)
-                 .values('book__title').annotate(sold=Sum('quantity'))
-                 .order_by('-sold')[:5])
+    top_books = (
+        OrderItem.objects.filter(order__in=paid)
+        .values('book__title')
+        .annotate(sold=Sum('quantity'))
+        .order_by('-sold')[:5]
+    )
 
     settings.REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     path = settings.REPORTS_DIR / f'sales_{today}.csv'

@@ -13,22 +13,34 @@ from users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 
-REG = {"email": "new@test.com", "phone_number": "+380502222222",
-       "first_name": "Ivan", "last_name": "P",
-       "password1": "Str0ngPass!234", "password2": "Str0ngPass!234"}
-ORDER = {"first_name": "Ivan", "last_name": "Petrenko", "email": "ivan@test.com",
-         "phone_number": "+380501234567", "address": "Kyiv"}
+REG = {
+    "email": "new@test.com",
+    "phone_number": "+380502222222",
+    "first_name": "Ivan",
+    "last_name": "P",
+    "password1": "Str0ngPass!234",
+    "password2": "Str0ngPass!234",
+}
+ORDER = {
+    "first_name": "Ivan",
+    "last_name": "Petrenko",
+    "email": "ivan@test.com",
+    "phone_number": "+380501234567",
+    "address": "Kyiv",
+}
 
 
 def add_to_cart(client, book, qty=1):
     return client.post(reverse("orders:cart_add", args=[book.id]), {"quantity": qty})
 
+
 def test_register_then_login(client):
     r = client.post(reverse("users:register"), REG)
     assert r.status_code == 302 and r.url == reverse("users:login")
     assert CustomUser.objects.filter(email="new@test.com").exists()
-    r = client.post(reverse("users:login"),
-                    {"username": REG["phone_number"], "password": REG["password1"]})
+    r = client.post(
+        reverse("users:login"), {"username": REG["phone_number"], "password": REG["password1"]}
+    )
     assert r.status_code == 302
     assert "_auth_user_id" in client.session
 
@@ -41,8 +53,7 @@ def test_register_duplicate_shows_errors(client):
 
 
 def test_login_wrong_password(client, user):
-    r = client.post(reverse("users:login"),
-                    {"username": user.phone_number, "password": "wrong"})
+    r = client.post(reverse("users:login"), {"username": user.phone_number, "password": "wrong"})
     assert r.status_code == 200
     assert "_auth_user_id" not in client.session
 
@@ -91,9 +102,17 @@ def test_create_book_anonymous_redirected(client):
 def test_create_book(auth_client, user):
     user.user_permissions.add(Permission.objects.get(codename="add_book"))
     cat = CategoryFactory()
-    r = auth_client.post(reverse("books:add"), {
-        "title": "Kobzar", "author": "Shevchenko", "price": "12.50",
-        "description": "", "category": cat.id, "stock": 3})
+    r = auth_client.post(
+        reverse("books:add"),
+        {
+            "title": "Kobzar",
+            "author": "Shevchenko",
+            "price": "12.50",
+            "description": "",
+            "category": cat.id,
+            "stock": 3,
+        },
+    )
     assert r.status_code == 302
     assert Book.objects.get(title="Kobzar").price == Decimal("12.50")
 
@@ -107,9 +126,17 @@ def test_edit_book_without_permission_forbidden(auth_client):
 def test_edit_book(auth_client, user):
     user.user_permissions.add(Permission.objects.get(codename="change_book"))
     book = BookFactory()
-    auth_client.post(reverse("books:edit", args=[book.id]), {
-        "title": "New title", "author": book.author, "price": "9.99",
-        "description": "", "category": book.category_id, "stock": 1})
+    auth_client.post(
+        reverse("books:edit", args=[book.id]),
+        {
+            "title": "New title",
+            "author": book.author,
+            "price": "9.99",
+            "description": "",
+            "category": book.category_id,
+            "stock": 1,
+        },
+    )
     book.refresh_from_db()
     assert book.title == "New title"
 
@@ -139,7 +166,7 @@ def test_delete_with_permission(auth_client, user):
 @patch("orders.views.stripe.checkout.Session.retrieve")
 def test_full_purchase_flow(mock_retrieve, mock_create, auth_client, user):
     mock_create.return_value = MagicMock(id="cs_1", url="https://stripe.test/pay")
-    mock_retrieve.return_value=MagicMock(payment_status='paid')
+    mock_retrieve.return_value = MagicMock(payment_status='paid')
 
     book = BookFactory(price=Decimal("10.00"))
     add_to_cart(auth_client, book, 2)
@@ -176,10 +203,16 @@ def test_order_then_webhook_marks_paid(mock_event, client):
     add_to_cart(client, BookFactory())
     client.post(reverse("orders:order_create"), ORDER)
     order = Order.objects.get()
-    mock_event.return_value = {"type": "checkout.session.completed",
-                               "data": {"object": {"metadata": {"order_id": str(order.id)}}}}
-    r = client.post(reverse("orders:stripe_webhook"), data=b"{}",
-                    content_type="application/json", HTTP_STRIPE_SIGNATURE="sig")
+    mock_event.return_value = {
+        "type": "checkout.session.completed",
+        "data": {"object": {"metadata": {"order_id": str(order.id)}}},
+    }
+    r = client.post(
+        reverse("orders:stripe_webhook"),
+        data=b"{}",
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE="sig",
+    )
     order.refresh_from_db()
     assert r.status_code == 200 and order.status == Order.OrderStatus.PAID
 
@@ -193,11 +226,15 @@ def test_manage_permissions_forbidden_without_perm(client):
 
 def test_manage_permissions_update(client):
     manager, target = UserFactory(), UserFactory()
-    manager.user_permissions.add(*Permission.objects.filter(
-        codename__in=["can_see_user_permissions", "can_set_user_permissions"]))
+    manager.user_permissions.add(
+        *Permission.objects.filter(
+            codename__in=["can_see_user_permissions", "can_set_user_permissions"]
+        )
+    )
     perm = Permission.objects.get(codename="add_book")
     client.force_login(manager)
-    r = client.post(reverse("users:manage_permissions", args=[target.id]),
-                    {"permissions": [perm.id]})
+    r = client.post(
+        reverse("users:manage_permissions", args=[target.id]), {"permissions": [perm.id]}
+    )
     assert r.status_code == 302
     assert list(target.user_permissions.all()) == [perm]

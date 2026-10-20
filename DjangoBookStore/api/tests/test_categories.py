@@ -25,14 +25,16 @@ def test_category_detail_includes_books(api_client):
 
 # Generated with AI, reviewed and modified
 def test_regular_user_cannot_create_category(user_api):
-    r = user_api.post(reverse('api:category-list'),
-                      {'name': 'Fantasy', 'slug': 'fantasy'}, format='json')
+    r = user_api.post(
+        reverse('api:category-list'), {'name': 'Fantasy', 'slug': 'fantasy'}, format='json'
+    )
     assert r.status_code == 403
 
 
 # Generated with AI, reviewed and modified
 def test_admin_can_create_category(admin_api):
-    r = admin_api.post(reverse('api:category-list'),
-                       {'name': 'Fantasy', 'slug': 'fantasy'}, format='json')
+    r = admin_api.post(
+        reverse('api:category-list'), {'name': 'Fantasy', 'slug': 'fantasy'}, format='json'
+    )
     assert r.status_code == 201
     assert r.data['slug'] == 'fantasy'

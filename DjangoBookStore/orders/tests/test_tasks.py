@@ -32,6 +32,7 @@ def test_daily_report_counts_only_paid_orders(settings, tmp_path):
     assert rows[1][1:] == ['1', '30']
     assert rows[-1][1] == '2'  # sold quantity of the top book
 
+
 def test_clear_expired_sessions_removes_only_expired():
     now = timezone.now()
     Session.objects.create(session_key='old', session_data='x', expire_date=now - timedelta(days=1))

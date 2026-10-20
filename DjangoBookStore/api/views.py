@@ -6,7 +6,9 @@ from categories.models import Category
 from .filters import BookFilter
 from .permissions import IsAdminOrReadOnly
 from .serializers import (
-    BookSerializer, CategorySerializer, CategoryDetailSerializer,
+    BookSerializer,
+    CategorySerializer,
+    CategoryDetailSerializer,
 )
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -19,17 +21,22 @@ from rest_framework.response import Response
 from orders.models import Order
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (
-    OrderSerializer, OrderCreateSerializer, OrderUpdateSerializer,
+    OrderSerializer,
+    OrderCreateSerializer,
+    OrderUpdateSerializer,
 )
 from drf_spectacular.utils import extend_schema
 from orders.cart import Cart
 from .serializers import (
-    CartSerializer, CartAddSerializer, CartRemoveSerializer,
+    CartSerializer,
+    CartAddSerializer,
+    CartRemoveSerializer,
 )
 
 
 class BookViewSet(viewsets.ModelViewSet):
     """CRUD for books. Anyone can read, only staff can change."""
+
     queryset = Book.objects.select_related('category').order_by('id')
     serializer_class = BookSerializer
     permission_classes = [IsAdminOrReadOnly]
@@ -40,6 +47,7 @@ class BookViewSet(viewsets.ModelViewSet):
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """CRUD for categories. Detail view includes the books of the category."""
+
     queryset = Category.objects.annotate(books_count=Count('books')).order_by('name')
     permission_classes = [IsAdminOrReadOnly]
     search_fields = ['name']
@@ -58,26 +66,34 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 class RegisterView(generics.CreateAPIView):
     """Create a new user account."""
+
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
 
 
 class MeView(generics.RetrieveAPIView):
     """Profile of the current user."""
+
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
         return self.request.user
 
-class OrderViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin,
-                   mixins.CreateModelMixin, mixins.UpdateModelMixin,
-                   viewsets.GenericViewSet):
+
+class OrderViewSet(
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
+    viewsets.GenericViewSet,
+):
     """Orders of the current user (staff sees all orders).
 
     Orders cannot be deleted. Contact data can be edited and the order can be
     canceled only by its owner and only while it is PENDING.
     """
+
     permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
     http_method_names = ['get', 'post', 'patch', 'head', 'options']
     filterset_fields = ['status']
@@ -86,8 +102,11 @@ class OrderViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin,
     def get_queryset(self):
         if getattr(self, 'swagger_fake_view', False):  # для генерации документации
             return Order.objects.none()
-        queryset = (Order.objects.select_related('user')
-                    .prefetch_related('items__book').order_by('-created_at'))
+        queryset = (
+            Order.objects.select_related('user')
+            .prefetch_related('items__book')
+            .order_by('-created_at')
+        )
         if self.request.user.is_staff:
             return queryset
         return queryset.filter(user=self.request.user)
@@ -121,17 +140,21 @@ class OrderViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin,
         order.save(update_fields=['status'])
         return Response(OrderSerializer(order).data)
 
+
 class CartViewSet(viewsets.ViewSet):
     """Session cart. Works for anonymous users too (like the website)."""
+
     permission_classes = [AllowAny]
 
     def _cart_response(self, request, status_code=status.HTTP_200_OK):
         cart = Cart(request)
-        data = CartSerializer({
-            'items': list(cart),
-            'total_items': len(cart),
-            'total_price': cart.get_total_price(),
-        }).data
+        data = CartSerializer(
+            {
+                'items': list(cart),
+                'total_items': len(cart),
+                'total_price': cart.get_total_price(),
+            }
+        ).data
         return Response(data, status=status_code)
 
     @extend_schema(responses=CartSerializer)

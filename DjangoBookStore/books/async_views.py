@@ -5,10 +5,7 @@ from categories.models import Category
 
 async def books_api(request):
     qs = Book.objects.select_related("category").order_by("-id")[:20]
-    books = [
-        {"id": b.id, "title": b.title, "category": b.category.name}
-        async for b in qs
-    ]
+    books = [{"id": b.id, "title": b.title, "category": b.category.name} async for b in qs]
     return JsonResponse({"books": books})
 
 
@@ -21,7 +18,9 @@ async def book_detail_api(request, pk):
 
 
 async def stats_api(request):
-    return JsonResponse({
-        "books": await Book.objects.acount(),
-        "categories": await Category.objects.acount(),
-    })
+    return JsonResponse(
+        {
+            "books": await Book.objects.acount(),
+            "categories": await Category.objects.acount(),
+        }
+    )

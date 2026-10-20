@@ -8,6 +8,7 @@ class IsAdminOrReadOnly(BasePermission):
             return True
         return bool(request.user and request.user.is_staff)
 
+
 class IsOwnerOrReadOnly(BasePermission):
     """Object-level permission: reading is allowed, changing only for the owner."""
 

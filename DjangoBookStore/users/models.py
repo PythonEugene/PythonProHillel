@@ -20,10 +20,8 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('First name is required')
         email = self.normalize_email(email)
         user = self.model(
-            email=email,
-            first_name=first_name,
-            phone_number=phone_number,
-            **extra_fields)
+            email=email, first_name=first_name, phone_number=phone_number, **extra_fields
+        )
         user.set_password(password)
         user.save()
         return user
@@ -44,13 +42,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField(verbose_name='Date of Birth', blank=True, null=True)
     first_name = models.CharField(verbose_name='First Name', max_length=30, blank=True)
     last_name = models.CharField(verbose_name='Last Name', max_length=30, blank=True)
-    profile_image = models.ImageField(verbose_name='Profile Image', upload_to='profile_pics/', null=True, blank=True)
-    phone_number = models.CharField(verbose_name='Phone Number', max_length=20, blank=True, unique=True)
+    profile_image = models.ImageField(
+        verbose_name='Profile Image', upload_to='profile_pics/', null=True, blank=True
+    )
+    phone_number = models.CharField(
+        verbose_name='Phone Number', max_length=20, blank=True, unique=True
+    )
     is_staff = models.BooleanField(verbose_name='Is staff', default=False)
     is_active = models.BooleanField(verbose_name='Is active', default=True)
-    date_joined = models.DateTimeField(verbose_name='Date of account creation', default=timezone.now)
-    app_lang = models.CharField(verbose_name='Language', max_length=5, choices=SUPPORTED_LANGUAGES, default='uk')
-
+    date_joined = models.DateTimeField(
+        verbose_name='Date of account creation', default=timezone.now
+    )
+    app_lang = models.CharField(
+        verbose_name='Language', max_length=5, choices=SUPPORTED_LANGUAGES, default='uk'
+    )
 
     objects = CustomUserManager()
 
@@ -63,9 +68,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'Users'
         permissions = [
             ('can_set_user_permissions', 'User can add permissions'),
-            ('can_see_user_permissions', 'User can see permissions list')
+            ('can_see_user_permissions', 'User can see permissions list'),
         ]
 
     def __str__(self):
         return self.email
-

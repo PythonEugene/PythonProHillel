@@ -10,8 +10,11 @@ from django.views.generic import FormView, CreateView
 from .forms import CustomUserCreationForm, UserPermissionForm
 
 User = get_user_model()
+
+
 class PermissionManagementService:
     """Business logic for changing the permissions of a user."""
+
     @staticmethod
     def update_user_permissions(user, permission_ids):
         """Replace all permissions of the user with the selected ones.
@@ -21,12 +24,15 @@ class PermissionManagementService:
             permission_ids: ids of the permissions that the user must have.
         """
         user.user_permissions.set(Permission.objects.filter(id__in=permission_ids))
+
+
 class ManagerUserPermissionsView(LoginRequiredMixin, UserPassesTestMixin, FormView):
     """Page for managing the permissions of a user.
     Viewing requires the `can_see_user_permissions` permission, changing
     requires can_set_user_permissions. Users without the first permission
     get 403, users with only the first one see a read-only form.
     """
+
     template_name = 'permissions_management.html'
     form_class = UserPermissionForm
 
@@ -71,18 +77,28 @@ class ManagerUserPermissionsView(LoginRequiredMixin, UserPassesTestMixin, FormVi
         if not self.request.user.has_perm('users.can_set_user_permissions'):
             return HttpResponseForbidden('No permission to change permissions')
         PermissionManagementService.update_user_permissions(
-            self.target_user, form.cleaned_data.get('permissions', []))
+            self.target_user, form.cleaned_data.get('permissions', [])
+        )
         return super().form_valid(form)
+
+
 class RegisterView(CreateView):
     """Registration page.
     On success the user is created and redirected to the login page.
     """
+
     form_class = CustomUserCreationForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
+
+
 class CustomLoginView(LoginView):
     """Login page. The username is the phone number."""
+
     template_name = 'users/login.html'
+
+
 class CustomLogoutView(LogoutView):
     """Log the user out (POST) and redirect to the book catalog."""
+
     next_page = reverse_lazy('books:list')

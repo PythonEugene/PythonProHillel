@@ -10,9 +10,13 @@ from users.tests.factories import UserFactory
 @pytest.fixture
 def user(db):
     return CustomUser.objects.create_user(
-        email="u@test.com", first_name="Ivan",
-        phone_number="+380501111111", password="pass12345",
+        email="u@test.com",
+        first_name="Ivan",
+        phone_number="+380501111111",
+        password="pass12345",
     )
+
+
 @pytest.fixture
 def auth_client(client, user):
     client.force_login(user)
@@ -48,8 +52,11 @@ def other_user(db):
 @pytest.fixture
 def admin_user(db):
     return CustomUser.objects.create_superuser(
-        email='admin@test.com', first_name='Admin',
-        phone_number='+380500000099', password='pass12345')
+        email='admin@test.com',
+        first_name='Admin',
+        phone_number='+380500000099',
+        password='pass12345',
+    )
 
 
 @pytest.fixture
@@ -59,7 +66,9 @@ def admin_api(admin_user):
     client.force_authenticate(user=admin_user)
     return client
 
+
 @pytest.fixture(autouse=True)
 def celery_eager():
     from DjangoBookStore.celery import app
+
     app.conf.task_always_eager = True

@@ -24,7 +24,8 @@ def test_create_user_without_email_raises():
 @pytest.mark.django_db
 def test_create_superuser_flags():
     su = CustomUser.objects.create_superuser(
-        email="s@s.com", first_name="S", phone_number="+380500000002", password="x12345678")
+        email="s@s.com", first_name="S", phone_number="+380500000002", password="x12345678"
+    )
     assert su.is_staff and su.is_superuser
 
 
@@ -37,4 +38,5 @@ def test_user_str(user):
 def test_phone_number_unique(user):
     with pytest.raises(IntegrityError):
         CustomUser.objects.create_user(
-            email="other@test.com", first_name="B", phone_number=user.phone_number)
+            email="other@test.com", first_name="B", phone_number=user.phone_number
+        )

@@ -2,6 +2,7 @@ import pytest
 from books.tests.factories import BookFactory, CategoryFactory
 from django.core.exceptions import ValidationError
 
+
 @pytest.mark.django_db
 def test_book_str():
     book = BookFactory(title="Python for beginers")

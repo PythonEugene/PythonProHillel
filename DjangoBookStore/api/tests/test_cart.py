@@ -14,9 +14,9 @@ CLEAR = 'api:cart-clear'
 
 def add(client, book, quantity=1, **extra):
     return client.post(
-    reverse(ADD),
-    {'book_id': book.id, 'quantity': quantity, **extra},
-    format='json',
+        reverse(ADD),
+        {'book_id': book.id, 'quantity': quantity, **extra},
+        format='json',
     )
 
 

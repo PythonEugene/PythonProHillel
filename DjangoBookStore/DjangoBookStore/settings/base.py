@@ -22,8 +22,6 @@ from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
 import dj_database_url
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
@@ -36,11 +34,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = config(
-    'ALLOWED_HOSTS',
-    default = 'localhost, 127.0.0.1',
-    cast=Csv()
-)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost, 127.0.0.1', cast=Csv())
 
 
 DATABASE_URL = config('DATABASE_URL', default='')
@@ -173,11 +167,7 @@ USE_TZ = True
 
 USE_L10N = True
 
-LANGUAGES = [
-    ('en', 'English'),
-    ('uk', 'Українська'),
-    ('pl', 'Polski')
-]
+LANGUAGES = [('en', 'English'), ('uk', 'Українська'), ('pl', 'Polski')]
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
@@ -245,13 +235,11 @@ LOGGING = {
 }
 
 
-
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLISHABLE_KEY = config('STRIPE_PUBLISHABLE_KEY')
 STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET', default='')
 DEFAULT_FROM_EMAIL = 'noreply@bookstore.local'
 CART_SESSION_ID = 'cart'
-
 
 
 REST_FRAMEWORK = {
@@ -326,20 +314,23 @@ if REDIS_URL:
     }
 else:
     CACHES = {
-        'default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-                    'LOCATION': 'default'},
-        'pages': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-                  'LOCATION': 'pages'},
+        'default': {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+            'LOCATION': 'default',
+        },
+        'pages': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache', 'LOCATION': 'pages'},
     }
 
-EMAIL_BACKEND = config(
-    'EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='shop@bookstore.local')
 
 from celery.schedules import crontab  # noqa: E402
+
 CELERY_BROKER_URL = f'{REDIS_URL}/0' if REDIS_URL else 'memory://'
 CELERY_RESULT_BACKEND = f'{REDIS_URL}/0' if REDIS_URL else 'cache+memory://'
-CELERY_TASK_ALWAYS_EAGER = not REDIS_URL   # без Redis задачи выполняются сразу, в том же процессе CELERY_TASK_EAGER_PROPAGATES = True CELERY_ACCEPT_CONTENT = ['json'] CELERY_TASK_SERIALIZER = 'json' CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_ALWAYS_EAGER = (
+    not REDIS_URL
+)  # без Redis задачи выполняются сразу, в том же процессе CELERY_TASK_EAGER_PROPAGATES = True CELERY_ACCEPT_CONTENT = ['json'] CELERY_TASK_SERIALIZER = 'json' CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_EAGER_PROPAGATES = True
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
@@ -363,6 +354,6 @@ if SENTRY_DSN and config('SENTRY_ENABLED', default=False, cast=bool):
         dsn=SENTRY_DSN,
         integrations=[DjangoIntegration(), CeleryIntegration()],
         environment=config('SENTRY_ENVIRONMENT', default='development'),
-        traces_sample_rate=0.1,      # 10% запросов попадают в мониторинг производительности
-        send_default_pii=False,      # не отправлять персональные данные (почта, IP)
+        traces_sample_rate=0.1,  # 10% запросов попадают в мониторинг производительности
+        send_default_pii=False,  # не отправлять персональные данные (почта, IP)
     )

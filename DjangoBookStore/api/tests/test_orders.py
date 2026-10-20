@@ -23,12 +23,12 @@ def client_for(user):
 
 def order_payload(book, quantity=1, **extra):
     data = {
-    'first_name': 'Ivan',
-    'last_name': 'Petrenko',
-    'email': 'ivan@test.com',
-    'phone_number': '+380501234567',
-    'address': 'Kyiv, Khreshchatyk 1',
-    'items': [{'book_id': book.id, 'quantity': quantity}],
+        'first_name': 'Ivan',
+        'last_name': 'Petrenko',
+        'email': 'ivan@test.com',
+        'phone_number': '+380501234567',
+        'address': 'Kyiv, Khreshchatyk 1',
+        'items': [{'book_id': book.id, 'quantity': quantity}],
     }
     data.update(extra)
     return data

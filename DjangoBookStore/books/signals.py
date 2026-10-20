@@ -10,6 +10,7 @@ from .models import Book
 @receiver([post_save, post_delete], sender=Book)
 def invalidate_book_cache(sender, instance, **kwargs):
     """A book changed: drop its detail cache and all cached catalog pages."""
+
     def invalidate():
         cache.delete(book_cache_key(instance.pk))
         caches['pages'].clear()

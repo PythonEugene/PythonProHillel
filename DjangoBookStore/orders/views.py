@@ -13,10 +13,11 @@ from .cart import Cart
 from .forms import OrderCreateForm
 from .models import Order, OrderItem
 
-
 logger = logging.getLogger(__name__)
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
 def cart_add(request, book_id):
     """Add a book to the session cart.
     Only POST requests change the cart; a GET request just redirects.
@@ -141,25 +142,24 @@ def order_payment(request, order_id):
     """
     order = get_object_or_404(Order, id=order_id)
 
-    line_items = [{
-        'price_data': {
-            'currency': 'usd',
-            'product_data': {'name': item.book.title},
-            'unit_amount': int(item.price * 100),
-        },
-        'quantity': item.quantity,
-    } for item in order.items.all()]
+    line_items = [
+        {
+            'price_data': {
+                'currency': 'usd',
+                'product_data': {'name': item.book.title},
+                'unit_amount': int(item.price * 100),
+            },
+            'quantity': item.quantity,
+        }
+        for item in order.items.all()
+    ]
 
     checkout_session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=line_items,
         mode='payment',
-        success_url=request.build_absolute_uri(
-            reverse('orders:order_success', args=[order.id])
-        ),
-        cancel_url=request.build_absolute_uri(
-            reverse('orders:cart_detail')
-        ),
+        success_url=request.build_absolute_uri(reverse('orders:order_success', args=[order.id])),
+        cancel_url=request.build_absolute_uri(reverse('orders:cart_detail')),
         metadata={'order_id': str(order.id)},
     )
 
@@ -208,9 +208,7 @@ def stripe_webhook(request):
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
-        )
+        event = stripe.Webhook.construct_event(payload, sig_header, settings.STRIPE_WEBHOOK_SECRET)
     except (ValueError, stripe.SignatureVerificationError):
         return HttpResponse(status=400)
 
