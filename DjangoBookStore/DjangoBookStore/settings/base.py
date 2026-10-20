@@ -297,13 +297,11 @@ REDIS_URL = config('REDIS_URL', default='')
 
 if REDIS_URL:
     CACHES = {
-        # общий кеш: детали книг, фрагменты шаблонов
         'default': {
             'BACKEND': 'django.core.cache.backends.redis.RedisCache',
             'LOCATION': f'{REDIS_URL}/1',
             'KEY_PREFIX': 'bookstore',
         },
-        # отдельный кеш для целых страниц: его можно сбросить целиком
         'pages': {
             'BACKEND': 'django.core.cache.backends.redis.RedisCache',
             'LOCATION': f'{REDIS_URL}/2',
@@ -326,7 +324,7 @@ from celery.schedules import crontab  # noqa: E402
 
 CELERY_BROKER_URL = f'{REDIS_URL}/0' if REDIS_URL else 'memory://'
 CELERY_RESULT_BACKEND = f'{REDIS_URL}/0' if REDIS_URL else 'cache+memory://'
-CELERY_TASK_ALWAYS_EAGER = not REDIS_URL
+CELERY_TASK_ALWAYS_EAGER = config('CELERY_TASK_ALWAYS_EAGER', default=not REDIS_URL, cast=bool)
 CELERY_TASK_EAGER_PROPAGATES = True
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
