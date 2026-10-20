@@ -8,6 +8,7 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y \
     postgresql-client \
     netcat-openbsd \
+    gettext \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -15,7 +16,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN find locale -name "*.po" -exec sh -c 'msgfmt -o "${1%.po}.mo" "$1"' _ {} \;
+RUN set -e; \
+    for po in $(find locale -name "*.po"); do \
+        msgfmt -o "${po%.po}.mo" "$po"; \
+    done
 
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 RUN sed -i 's/\r$//' /app/docker-entrypoint.sh && chmod +x /app/docker-entrypoint.sh
