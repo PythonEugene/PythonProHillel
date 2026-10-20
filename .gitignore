@@ -17,7 +17,6 @@ MySQL/
 parent/
 home_works/
 **/*.env
-**/*.coveragerc
 **/*.coverage
 **/logs/
 reports/

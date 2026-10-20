@@ -11,12 +11,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 import os
 from django.utils.translation import gettext_lazy as _
 from datetime import timedelta
 from decouple import config, Csv
-from django.conf.global_settings import STATICFILES_DIRS, LOGIN_REDIRECT_URL, STATIC_ROOT
 import sentry_sdk
 from sentry_sdk.integrations.celery import CeleryIntegration
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -328,9 +326,7 @@ from celery.schedules import crontab  # noqa: E402
 
 CELERY_BROKER_URL = f'{REDIS_URL}/0' if REDIS_URL else 'memory://'
 CELERY_RESULT_BACKEND = f'{REDIS_URL}/0' if REDIS_URL else 'cache+memory://'
-CELERY_TASK_ALWAYS_EAGER = (
-    not REDIS_URL
-)  # без Redis задачи выполняются сразу, в том же процессе CELERY_TASK_EAGER_PROPAGATES = True CELERY_ACCEPT_CONTENT = ['json'] CELERY_TASK_SERIALIZER = 'json' CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_ALWAYS_EAGER = not REDIS_URL
 CELERY_TASK_EAGER_PROPAGATES = True
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'

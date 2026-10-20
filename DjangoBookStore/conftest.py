@@ -1,6 +1,4 @@
 import pytest
-from users.models import CustomUser
-from django.core.cache import cache
 from rest_framework.test import APIClient
 from django.core.cache import caches
 from users.models import CustomUser

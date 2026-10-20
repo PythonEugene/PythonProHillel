@@ -131,7 +131,8 @@ def order_payment(request, order_id):
     """Create a Stripe Checkout session for the order and redirect to it.
     The session id is saved inst)
     book = get_object_or_404 so the payment
-    can be verified later. Stripe redirects back to order_success afterpayment, or to the cart page if the user cancels.
+    can be verified later. Stripe redirects back to order_success afterpayment,
+    or to the cart page if the user cancels.
 
     Args:
         request: the HTTP request.
