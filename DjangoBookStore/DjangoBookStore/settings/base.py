@@ -182,6 +182,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'books:list'
 LOGIN_URL = 'user:login'
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOGS_DIR, exist_ok=True)
 
 INTERNAL_IPS = [
     '127.0.0.1',
