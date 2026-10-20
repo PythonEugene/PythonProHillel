@@ -19,7 +19,7 @@ from django.urls import path,include
 from django.http import HttpResponse
 from django.conf.urls.static import static
 from django.conf import settings
-
+from .health import health
 
 def test(request):
     return HttpResponse("OK")
@@ -34,10 +34,9 @@ urlpatterns = [
     path('orders/', include('orders.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('api/', include('api.urls')),
+    path('health/', health, name='health'),
 ]
 
-if settings.DEBUG:
+if settings.DEBUG and 'debug_toolbar' in settings.INSTALLED_APPS:
     import debug_toolbar
-    urlpatterns += [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ]
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]

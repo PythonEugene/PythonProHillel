@@ -1,12 +1,14 @@
 **/.venv/
 **/venv/
 **/env/
+**/.env/
 
 **/__pycache__/
 
 **/instance/
 **/*.db
 **/*.sqlite3
+**/*.mo
 
 **/.idea/
 
@@ -14,3 +16,12 @@ FastAPI/
 MySQL/
 parent/
 home_works/
+**/*.env
+**/*.coveragerc
+**/*.coverage
+**/logs/
+reports/
+**/reports/.env
+staticfiles/
+htmlcow/
+.coverage
