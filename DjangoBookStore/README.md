@@ -1,5 +1,9 @@
 # **DjangoBookStore**
 
+[![Django CI](https://github.com/PythonEugene/PythonProHillel/actions/workflows/django.yml/badge.svg)](https://github.com/PythonEugene/PythonProHillel/actions/workflows/django.yml)
+[![codecov](https://codecov.io/github/PythonEugene/PythonProHillel/graph/badge.svg?token=UW5552TOGM)](https://codecov.io/github/PythonEugene/PythonProHillel)
+
+
 Online bookstore built with Django as a learning project (Hillel "Python Pro").
 Users can browse the catalog, add books to a cart, place an order and pay
 with Stripe. The interface is available in Ukrainian and English.
@@ -121,6 +125,63 @@ Without `REDIS_URL` (local run, tests) tasks are executed synchronously.
 ### Monitoring (Sentry)
 
 Errors from Django and Celery are sent to Sentry when SENTRY_DSN is set and SENTRY_ENABLED=1 (enabled in docker-compose.yml).
+
+
+## Live demo
+
+Deployed on Render (free tier, the first request after a pause can take about a minute):
+https://djangobookstore-ijxo.onrender.com
+
+- Health check: `/health/`
+- API docs (Swagger): `/api/docs/`
+- Docker image: `<DOCKERHUB_USER>/djangobookstore` on Docker Hub
+
+## CI/CD
+
+GitHub Actions (`.github/workflows/django.yml`) runs on every push and pull request:
+
+1. **Lint:** `flake8` and `black --check`
+2. **Tests:** `pytest` with coverage (fails below 80%), the report is sent to Codecov
+3. **Docker:** on push to `main`, if both jobs passed, the image is built and pushed to
+Docker Hub (`latest` and the commit SHA tags)
+
+Render builds and deploys the service from the repository after the checks pass.
+
+## Settings structure
+
+| File | Purpose |
+|---|---|
+| `DjangoBookStore/settings/base.py` | Common settings for all environments |
+| `DjangoBookStore/settings/development.py` | `DEBUG=True`, Debug Toolbar (default for `manage.py` and `pytest`) |
+| `DjangoBookStore/settings/production.py` | `DEBUG=False`, HTTPS redirect, secure cookies, HSTS, WhiteNoise |
+
+The module is selected with `DJANGO_SETTINGS_MODULE`. Secrets are read from environment
+variables (a local `.env` file is used in development, see `.env.example`).
+
+Static files are served by WhiteNoise in production and by NGINX in `docker-compose`.
+HSTS `include_subdomains` and `preload` are intentionally off: on a platform domain
+the subdomains are not ours.
+
+## Deployment (Render)
+
+| Service | Type | Notes |
+|---|---|---|
+| `djangobookstore` | Web Service (Docker) | Root directory `DjangoBookStore`, health check `/health/` |
+| `bookstore-db` | PostgreSQL | `DATABASE_URL` (internal URL) |
+| `bookstore-cache` | Key Value | `REDIS_URL` (internal URL) |
+
+Required environment variables: `DJANGO_SETTINGS_MODULE`, `SECRET_KEY`, `ALLOWED_HOSTS`,
+`CSRF_TRUSTED_ORIGINS`, `DATABASE_URL`, `REDIS_URL`, `RUN_MIGRATIONS=1`, `STRIPE_*`.
+On the free tier there is no background worker, so Celery tasks run inside the web process
+(`CELERY_ALWAYS_EAGER=1`). Migrations, `collectstatic`, the admin account and demo data are
+handled by `docker-entrypoint.sh` on start.
+
+The free Render database expires 30 days after creation.
+
+## Health check
+
+`GET /health/` returns `200 {"status": "ok", "database": "ok", "cache": "ok"}`, or `503` if the
+database or the cache is not available.
 ## AI Usage
 
 AI (Claude) was used in this project for three things.
