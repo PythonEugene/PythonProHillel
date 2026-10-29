@@ -1,0 +1,13 @@
+.venv/
+**/.venv/
+**/__pycache__/
+.idea/
+.env/
+**/.env
+**/*.sqlite3
+**/*.mo
+**/staticfiles/
+**/reports/D
+**/htmlcov/
+**/.coverage
+**/coverage.xml

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <span>User {{ target_user.email }} permissions</span>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if perms.user.can_set_user_permissions %}
+                <button type="submit">Save</button>
+            {% endif %}
+        </form>
+    </body>
+</html>

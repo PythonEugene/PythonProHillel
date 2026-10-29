@@ -1,0 +1,34 @@
+{% extends 'books/base.html' %}
+{% load i18n %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{ book.title }}</h1>
+        <h5 class="text-muted mb-3">{{ book.author }}</h5>
+
+        <p><strong>{% translate "Category:" %}</strong> {{ book.category }}</p>
+        <p><strong>{% translate "Price:" %}</strong> {{ book.price }} UAH</p>
+        <p><strong>{% translate "In stock:" %}</strong> {{ book.stock }}</p>
+
+        <hr>
+        <p>{{ book.description }}</p>
+
+        {% if book.stock > 0 %}
+        <form action="{% url 'orders:cart_add' book.id %}" method="post" class="d-flex align-items-center gap-2 mb-3">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" class="form-control" style="width: 80px;">
+            <button type="submit" class="btn btn-primary">{% translate "Add to cart" %}</button>
+        </form>
+        {% else %}
+        <p class="text-danger">{% translate "Out of stock" %}</p>
+        {% endif %}
+
+        <a href="{% url 'books:list' %}" class="btn btn-secondary">{% translate "Back to catalog" %}</a>
+        <a href="{% url 'books:edit' book.pk %}" class="btn btn-outline-secondary">{% translate "Edit" %}</a>
+        <a href="{% url 'books:delete' book.pk %}" class="btn btn-outline-danger">{% translate "Delete" %}</a>
+    </div>
+</div>
+{% endblock %}

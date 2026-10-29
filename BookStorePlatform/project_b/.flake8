@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 100
+exclude =
+    .venv,
+    venv,
+    migrations,
+    staticfiles,
+    __pycache__,
+    locale
+extend-ignore = E203, W503
+per-file-ignores =
+    warehouse/settings/*.py: F401, F403, F405

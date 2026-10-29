@@ -1,0 +1,238 @@
+# **DjangoBookStore**
+
+[![Django CI](https://github.com/PythonEugene/PythonProHillel/actions/workflows/django.yml/badge.svg)](https://github.com/PythonEugene/PythonProHillel/actions/workflows/django.yml)
+[![codecov](https://codecov.io/github/PythonEugene/PythonProHillel/graph/badge.svg?token=UW5552TOGM)](https://codecov.io/github/PythonEugene/PythonProHillel)
+
+
+Online bookstore built with Django as a learning project (Hillel "Python Pro").
+Users can browse the catalog, add books to a cart, place an order and pay
+with Stripe. The interface is available in Ukrainian and English.
+
+### Features
+
+• Book catalog with categories, search by title and pagination
+• CRUD for books with permission checks (add_book, change_book, delete_book)
+• Custom user model (login by phone number), registration, login, logout
+• Management of user permissions (can_see_user_permissions, can_set_user_permissions)
+• Session cart and order creation with a confirmation email
+• Stripe Checkout payment, verified on the success page and by a webhook
+• Async JSON API: /books/api/books/, /books/api/books/<id>/, /books/api/stats/
+• Internationalization (uk / en) with .po and .mo files in locale/
+• Automated tests with pytest (unit, async and integration)
+
+### Project structure
+
+#### App:                          Purpose:
+
+   books                         Book model, catalog views, async API
+   categories                    Book categories
+   users                         Custom user, registration, login, 
+                                 permission management
+   orders                        Cart, orders, Stripe payment and webhook
+   tests_integration             End-to-end user flow tests
+   locale                        Translations (uk, en, pl)
+
+## Getting started
+
+With Docker
+
+_docker compose up --build_
+
+The stack uses PostgreSQL and Redis. Apply migrations if needed:
+
+_docker compose exec web python manage.py migrate_
+
+(Replace web with the name of the Django service in docker-compose.yml.)
+
+## Locally
+
+_python -m venv .venv
+.venv\Scripts\activate          
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver_
+
+To run the async API through ASGI:
+
+_python -m uvicorn DjangoBookStore.asgi:application --reload_
+
+### Environment settings
+
+The project expects these values in settings.py (or environment variables):
+• STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET for payments
+• DEFAULT_FROM_EMAIL and email backend settings for order emails
+• CART_SESSION_ID — session key for the cart
+
+## Translations
+
+django-admin makemessages -l uk -l en -l pl
+django-admin compilemessages
+
+## Testing
+
+pytest
+The command runs all tests and prints the coverage report. The coverage
+configuration is in .coveragerc and pytest.ini.
+• Tools: pytest, pytest-django, pytest-asyncio, pytest-cov, factory-boy
+• Stripe and email are mocked with unittest.mock
+• Test data is created with factories (books/tests/factories.py,
+orders/tests/factories.py, users/tests/factories.py)
+
+## Architecture and infrastructure
+
+browser -> NGINX (:80) -+-- /static/  -> files from a shared volume
+                        +-- other     -> Gunicorn (web:8000) -> Django
+Django <-> PostgreSQL     Django cache + Celery broker -> Redis
+Celery worker / Celery Beat -> Redis (broker and results) + PostgreSQL
+
+| Service | Purpose |
+|web| Django under Gunicorn (3 workers), runs migrations and collectstatic on start
+|nginx| Reverse proxy, serves static files
+|db| PostgreSQL 16
+|redis| Cache, Celery broker and result backend
+|celery| Worker for background tasks
+|celery-beat| Scheduler for periodic tasks
+
+browser | Scheduler for periodic tasks |
+
+### Run
+bash 
+docker compose up -d --build 
+docker compose exec web python manage.py createsuperuser 
+docker compose exec web python manage.py generate_books
+The site is available at `http://localhost
+
+### Caching (Redis)
+
+- View cache: catalog page (`cache_page`, 60 s, separate cache `pages`)
+- Template fragment: categories select (300 s, key includes language, current
+  category and a version number)
+- Low-level cache: book detail object (`book:<id>`, 15 min)
+- Invalidation:broker and results) clears the book cache and catalog pages when
+  a book or category is saved or deleted (after the transaction commits).
+  The categories fragment is invalidated by changing its version key.
+
+### Background tasks (Celery)
+
+| Task | Description | Schedule |
+|---|---|---|
+| `orders.tasks.send_order_confirmation` | Order confirmation email, retried on mail errors | on order creation |
+| `orders.tasks.generate_daily_report` | CSV report of paid orders, saved to `reports/` | daily 23:55 |
+| `users.tasks.clear_expired_sessions` | Removes expired sessions | daily 03:00 |
+
+Without `REDIS_URL` (local run, tests) tasks are executed synchronously.
+
+### Monitoring (Sentry)
+
+Errors from Django and Celery are sent to Sentry when SENTRY_DSN is set and SENTRY_ENABLED=1 (enabled in docker-compose.yml).
+
+
+## Live demo
+
+Deployed on Render (free tier, the first request after a pause can take about a minute):
+https://djangobookstore-ijxo.onrender.com
+
+- Health check: `/health/`
+- API docs (Swagger): `/api/docs/`
+- Docker image: `<DOCKERHUB_USER>/djangobookstore` on Docker Hub
+
+## CI/CD
+
+GitHub Actions (`.github/workflows/django.yml`) runs on every push and pull request:
+
+1. **Lint:** `flake8` and `black --check`
+2. **Tests:** `pytest` with coverage (fails below 80%), the report is sent to Codecov
+3. **Docker:** on push to `main`, if both jobs passed, the image is built and pushed to
+Docker Hub (`latest` and the commit SHA tags)
+
+Render builds and deploys the service from the repository after the checks pass.
+
+## Settings structure
+
+| File | Purpose |
+|---|---|
+| `DjangoBookStore/settings/base.py` | Common settings for all environments |
+| `DjangoBookStore/settings/development.py` | `DEBUG=True`, Debug Toolbar (default for `manage.py` and `pytest`) |
+| `DjangoBookStore/settings/production.py` | `DEBUG=False`, HTTPS redirect, secure cookies, HSTS, WhiteNoise |
+
+The module is selected with `DJANGO_SETTINGS_MODULE`. Secrets are read from environment
+variables (a local `.env` file is used in development, see `.env.example`).
+
+Static files are served by WhiteNoise in production and by NGINX in `docker-compose`.
+HSTS `include_subdomains` and `preload` are intentionally off: on a platform domain
+the subdomains are not ours.
+
+## Deployment (Render)
+
+| Service | Type | Notes |
+|---|---|---|
+| `djangobookstore` | Web Service (Docker) | Root directory `DjangoBookStore`, health check `/health/` |
+| `bookstore-db` | PostgreSQL | `DATABASE_URL` (internal URL) |
+| `bookstore-cache` | Key Value | `REDIS_URL` (internal URL) |
+
+Required environment variables: `DJANGO_SETTINGS_MODULE`, `SECRET_KEY`, `ALLOWED_HOSTS`,
+`CSRF_TRUSTED_ORIGINS`, `DATABASE_URL`, `REDIS_URL`, `RUN_MIGRATIONS=1`, `STRIPE_*`.
+On the free tier there is no background worker, so Celery tasks run inside the web process
+(`CELERY_ALWAYS_EAGER=1`). Migrations, `collectstatic`, the admin account and demo data are
+handled by `docker-entrypoint.sh` on start.
+
+The free Render database expires 30 days after creation.
+
+## Health check
+
+`GET /health/` returns `200 {"status": "ok", "database": "ok", "cache": "ok"}`, or `503` if the
+database or the cache is not available.
+## AI Usage
+
+AI (Claude) was used in this project for three things.
+
+    1. Code review. Three complex views were reviewed: order_success,
+stripe_webhook and ManagerUserPermissionsView. The original code, the AI
+recommendations, the decisions (applied or rejected) and the final code are
+described in AI_REVIEW.md. Main results: payment verification
+before marking an order as paid, a fixed Stripe webhook (CSRF, idempotency),
+fewer SQL queries in the permissions page.
+
+    2. Test generation. AI generated tests for the models and views. Every
+generated test was run, reviewed and modified, and is marked with the comment
+# Generated with AI, reviewed and modified. Several tests found real bugs
+in the code (for example, Cart.clear() did not clear the cart).
+
+    3. Documentation. Docstrings for all views and this README were written
+with AI help and then checked against the code.
+All prompts are listed in AI_PROMPTS.md.
+What AI got wrong or needed checking: some advice had to be rejected
+(for example, forbidding managers to edit their own permissions was considered
+out of scope), and generated tests needed fixes (field names, order of mock
+arguments, fixtures). AI output was never accepted without running the tests.
+
+## REST API
+
+Built with Django REST Framework. Interactive documentation (Swagger):
+`/api/docs/`, ReDoc: API
+
+Built wit OpenAPI schema:lt with Django R
+
+| Endpoint | Description | Access |
+|---|---|---|
+|ctive documenta| Books (filters, search, ordering) | read: everyone, write: admin |
+|on (Swagger):
+`/api/| Categories with books count | read: everyone, write: admin |
+|entation (Swagge| Orders with nested items,ngo REST Framework. In| authenticated, owner only |
+|REST Framework| Session cart:ilt wit## REST AP## REST A| everyone |
+|uilt with Django REST F| Registration | everyone |
+|o REST Framewor## REST API
+
+Built with## REST API
+
+Built wit| JWT | everyone |
+|ith Django REST Fr| Current user | authenticated |
+
+- Pagination: 20 items per page (`?page=2`)
+- Filters:i/docs/`, ReDoc: `/api/redoc/`, OpenAPI schema: `/api/schema## REST API
+## REST API
+
+Built w- Throttling: 100 requests/hour for anonymous, 1000/hour for authenticated users
+- Authorization: ReDoc: `/api/redoc/`, OpenAPI schema: `- CORS: allowed origins are set inT Framework. Interactive- Permissions:uilt with Django REST## REST API
+
+Built wi(see `api/permissions.py`)

@@ -1,0 +1,1582 @@
+openapi: 3.0.3
+info:
+  title: DjangoBookStore API
+  version: 1.0.0
+  description: |-
+    REST API of the bookstore: catalog, orders and cart.
+
+    Authorization: get a token at `/api/token/`, then press "Authorize" and paste the access token.
+paths:
+  /api/auth/register/:
+    post:
+      operationId: auth_register_create
+      description: Create a new user account.
+      tags:
+      - auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+  /api/books/:
+    get:
+      operationId: books_list
+      description: CRUD for books. Anyone can read, only staff can change.
+      parameters:
+      - in: query
+        name: author
+        schema:
+          type: string
+      - in: query
+        name: category
+        schema:
+          type: string
+      - in: query
+        name: in_stock
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - in: query
+        name: price_max
+        schema:
+          type: number
+      - in: query
+        name: price_min
+        schema:
+          type: number
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - books
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBookList'
+          description: ''
+    post:
+      operationId: books_create
+      description: CRUD for books. Anyone can read, only staff can change.
+      tags:
+      - books
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+  /api/books/{id}/:
+    get:
+      operationId: books_retrieve
+      description: CRUD for books. Anyone can read, only staff can change.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Book.
+        required: true
+      tags:
+      - books
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+    put:
+      operationId: books_update
+      description: CRUD for books. Anyone can read, only staff can change.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Book.
+        required: true
+      tags:
+      - books
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BookRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+    patch:
+      operationId: books_partial_update
+      description: CRUD for books. Anyone can read, only staff can change.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Book.
+        required: true
+      tags:
+      - books
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBookRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBookRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBookRequest'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+    delete:
+      operationId: books_destroy
+      description: CRUD for books. Anyone can read, only staff can change.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Book.
+        required: true
+      tags:
+      - books
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/cart/:
+    get:
+      operationId: cart_list
+      description: Show the cart.
+      tags:
+      - cart
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+          description: ''
+  /api/cart/add/:
+    post:
+      operationId: cart_add_create
+      description: Add a book (or set its quantity with override=true).
+      tags:
+      - cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartAddRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartAddRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartAddRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+          description: ''
+  /api/cart/clear/:
+    post:
+      operationId: cart_clear_create
+      description: Remove everything from the cart.
+      tags:
+      - cart
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+          description: ''
+  /api/cart/remove/:
+    post:
+      operationId: cart_remove_create
+      description: Remove a book from the cart.
+      tags:
+      - cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartRemoveRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CartRemoveRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CartRemoveRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+          description: ''
+  /api/categories/:
+    get:
+      operationId: categories_list
+      description: CRUD for categories. Detail view includes the books of the category.
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCategoryList'
+          description: ''
+    post:
+      operationId: categories_create
+      description: CRUD for categories. Detail view includes the books of the category.
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/categories/{id}/:
+    get:
+      operationId: categories_retrieve
+      description: CRUD for categories. Detail view includes the books of the category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Category.
+        required: true
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryDetail'
+          description: ''
+    put:
+      operationId: categories_update
+      description: CRUD for categories. Detail view includes the books of the category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Category.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    patch:
+      operationId: categories_partial_update
+      description: CRUD for categories. Detail view includes the books of the category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Category.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoryRequest'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    delete:
+      operationId: categories_destroy
+      description: CRUD for categories. Detail view includes the books of the category.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Category.
+        required: true
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/orders/:
+    get:
+      operationId: orders_list
+      description: |-
+        Orders of the current user (staff sees all orders).
+
+        Orders cannot be deleted. Contact data can be edited and the order can be
+        canceled only by its owner and only while it is PENDING.
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: status
+        schema:
+          type: string
+          enum:
+          - CANCELED
+          - DELIVERED
+          - PAID
+          - PENDING
+        description: |-
+          * `PENDING` - Pending
+          * `PAID` - Paid
+          * `DELIVERED` - Delivered
+          * `CANCELED` - Canceled
+      tags:
+      - orders
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrderList'
+          description: ''
+    post:
+      operationId: orders_create
+      description: |-
+        Orders of the current user (staff sees all orders).
+
+        Orders cannot be deleted. Contact data can be edited and the order can be
+        canceled only by its owner and only while it is PENDING.
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCreate'
+          description: ''
+  /api/orders/{id}/:
+    get:
+      operationId: orders_retrieve
+      description: |-
+        Orders of the current user (staff sees all orders).
+
+        Orders cannot be deleted. Contact data can be edited and the order can be
+        canceled only by its owner and only while it is PENDING.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+    patch:
+      operationId: orders_partial_update
+      description: |-
+        Orders of the current user (staff sees all orders).
+
+        Orders cannot be deleted. Contact data can be edited and the order can be
+        canceled only by its owner and only while it is PENDING.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderUpdateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderUpdateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrderUpdateRequest'
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderUpdate'
+          description: ''
+  /api/orders/{id}/cancel/:
+    post:
+      operationId: orders_cancel_create
+      description: Cancel a pending order.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this order.
+        required: true
+      tags:
+      - orders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OrderRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+          description: ''
+  /api/token/:
+    post:
+      operationId: token_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPairRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPairRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPairRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/token/refresh/:
+    post:
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefreshRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefreshRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefreshRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/token/verify/:
+    post:
+      operationId: token_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerifyRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerifyRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerifyRequest'
+        required: true
+      responses:
+        '200':
+          description: No response body
+  /api/users/me/:
+    get:
+      operationId: users_me_retrieve
+      description: Profile of the current user.
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        author:
+          type: string
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        description:
+          type: string
+        stock:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        category:
+          allOf:
+          - $ref: '#/components/schemas/CategoryShort'
+          readOnly: true
+      required:
+      - author
+      - category
+      - id
+      - price
+      - title
+    BookRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+        author:
+          type: string
+          minLength: 1
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        description:
+          type: string
+        stock:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        category_id:
+          type: integer
+          writeOnly: true
+      required:
+      - author
+      - category_id
+      - price
+      - title
+    BookShort:
+      type: object
+      description: Compact book, used inside a category.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        author:
+          type: string
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - author
+      - id
+      - price
+      - title
+    BookShortRequest:
+      type: object
+      description: Compact book, used inside a category.
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+        author:
+          type: string
+          minLength: 1
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - author
+      - price
+      - title
+    Cart:
+      type: object
+      description: Whole cart (read only).
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        total_items:
+          type: integer
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+      required:
+      - items
+      - total_items
+      - total_price
+    CartAddRequest:
+      type: object
+      description: Input for adding a book to the cart.
+      properties:
+        book_id:
+          type: integer
+        quantity:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 1
+        override:
+          type: boolean
+          default: false
+      required:
+      - book_id
+    CartItem:
+      type: object
+      description: One cart line (read only).
+      properties:
+        book:
+          $ref: '#/components/schemas/BookShort'
+        quantity:
+          type: integer
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+      required:
+      - book
+      - price
+      - quantity
+      - total_price
+    CartRemoveRequest:
+      type: object
+      description: Input for removing a book from the cart.
+      properties:
+        book_id:
+          type: integer
+      required:
+      - book_id
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Category Name
+          maxLength: 100
+        slug:
+          type: string
+          title: URL Slug
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        books_count:
+          type: integer
+          readOnly: true
+      required:
+      - books_count
+      - id
+      - name
+      - slug
+    CategoryDetail:
+      type: object
+      description: Single category with the list of its books.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Category Name
+          maxLength: 100
+        slug:
+          type: string
+          title: URL Slug
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        books_count:
+          type: integer
+          readOnly: true
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/BookShort'
+          readOnly: true
+      required:
+      - books
+      - books_count
+      - id
+      - name
+      - slug
+    CategoryRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Category Name
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          title: URL Slug
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    CategoryShort:
+      type: object
+      description: Compact category, used inside a book.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Category Name
+          maxLength: 100
+        slug:
+          type: string
+          title: URL Slug
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - id
+      - name
+      - slug
+    CategoryShortRequest:
+      type: object
+      description: Compact category, used inside a book.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Category Name
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          title: URL Slug
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+      required:
+      - name
+      - slug
+    Order:
+      type: object
+      description: Order for reading, with nested items.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone_number:
+          type: string
+          maxLength: 20
+        address:
+          type: string
+          maxLength: 255
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          readOnly: true
+        total_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+          readOnly: true
+      required:
+      - address
+      - created_at
+      - email
+      - first_name
+      - id
+      - items
+      - last_name
+      - phone_number
+      - status
+      - total_price
+    OrderCreate:
+      type: object
+      description: Input for creating an order. Prices are taken from the database.
+      properties:
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone_number:
+          type: string
+          maxLength: 20
+        address:
+          type: string
+          maxLength: 255
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemInput'
+      required:
+      - address
+      - email
+      - first_name
+      - items
+      - last_name
+      - phone_number
+    OrderCreateRequest:
+      type: object
+      description: Input for creating an order. Prices are taken from the database.
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        last_name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        phone_number:
+          type: string
+          minLength: 1
+          maxLength: 20
+        address:
+          type: string
+          minLength: 1
+          maxLength: 255
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItemInputRequest'
+      required:
+      - address
+      - email
+      - first_name
+      - items
+      - last_name
+      - phone_number
+    OrderItem:
+      type: object
+      description: 'Order line for reading: nested book, price and line total.'
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        book:
+          allOf:
+          - $ref: '#/components/schemas/BookShort'
+          readOnly: true
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        total:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+          readOnly: true
+      required:
+      - book
+      - id
+      - price
+      - total
+    OrderItemInput:
+      type: object
+      description: 'One line of a new order: book id and quantity.'
+      properties:
+        book_id:
+          type: integer
+        quantity:
+          type: integer
+          maximum: 100
+          minimum: 1
+      required:
+      - book_id
+      - quantity
+    OrderItemInputRequest:
+      type: object
+      description: 'One line of a new order: book id and quantity.'
+      properties:
+        book_id:
+          type: integer
+        quantity:
+          type: integer
+          maximum: 100
+          minimum: 1
+      required:
+      - book_id
+      - quantity
+    OrderItemRequest:
+      type: object
+      description: 'Order line for reading: nested book, price and line total.'
+      properties:
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        quantity:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - price
+    OrderRequest:
+      type: object
+      description: Order for reading, with nested items.
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        last_name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        phone_number:
+          type: string
+          minLength: 1
+          maxLength: 20
+        address:
+          type: string
+          minLength: 1
+          maxLength: 255
+      required:
+      - address
+      - email
+      - first_name
+      - last_name
+      - phone_number
+    OrderUpdate:
+      type: object
+      description: Only contact and delivery data can be edited.
+      properties:
+        first_name:
+          type: string
+          maxLength: 100
+        last_name:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone_number:
+          type: string
+          maxLength: 20
+        address:
+          type: string
+          maxLength: 255
+      required:
+      - address
+      - email
+      - first_name
+      - last_name
+      - phone_number
+    PaginatedBookList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+    PaginatedCategoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    PaginatedOrderList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    PatchedBookRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+        author:
+          type: string
+          minLength: 1
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        description:
+          type: string
+        stock:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+        category_id:
+          type: integer
+          writeOnly: true
+    PatchedCategoryRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Category Name
+          maxLength: 100
+        slug:
+          type: string
+          minLength: 1
+          title: URL Slug
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+    PatchedOrderUpdateRequest:
+      type: object
+      description: Only contact and delivery data can be edited.
+      properties:
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        last_name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        phone_number:
+          type: string
+          minLength: 1
+          maxLength: 20
+        address:
+          type: string
+          minLength: 1
+          maxLength: 255
+    Register:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone_number:
+          type: string
+          maxLength: 20
+        first_name:
+          type: string
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 30
+      required:
+      - email
+      - first_name
+      - id
+      - phone_number
+    RegisterRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 254
+        phone_number:
+          type: string
+          minLength: 1
+          maxLength: 20
+        first_name:
+          type: string
+          minLength: 1
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 30
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - email
+      - first_name
+      - password
+      - phone_number
+    StatusEnum:
+      enum:
+      - PENDING
+      - PAID
+      - DELIVERED
+      - CANCELED
+      type: string
+      description: |-
+        * `PENDING` - Pending
+        * `PAID` - Paid
+        * `DELIVERED` - Delivered
+        * `CANCELED` - Canceled
+    TokenObtainPair:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - refresh
+    TokenObtainPairRequest:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          writeOnly: true
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - password
+      - phone_number
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+      required:
+      - access
+    TokenRefreshRequest:
+      type: object
+      properties:
+        refresh:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - refresh
+    TokenVerifyRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - token
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        phone_number:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          readOnly: true
+        last_name:
+          type: string
+          readOnly: true
+        date_joined:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date of account creation
+      required:
+      - date_joined
+      - email
+      - first_name
+      - id
+      - last_name
+      - phone_number
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,14 @@
+{% extends "books/base.html" %}
+{% block content %}
+{% load i18n %}
+
+<h2>{% translate "Placing the order" %}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <button type="submit" class="btn btn-success">{% translate "Proceed to Payment" %}</button>
+</form>
+
+<h4>{% translate "Total:" %} {{ total_price }} $</h4>
+{% endblock %}

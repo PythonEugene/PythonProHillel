@@ -1,0 +1,106 @@
+x-a-env: &a-env
+  env_file: ./project_a/.env
+  environment: &a-vars
+    DJANGO_SETTINGS_MODULE: DjangoBookStore.settings.development
+    DATABASE_URL: postgres://postgres:postgres@db_a:5432/bookstore_a
+    REDIS_URL: redis://redis:6379
+    WAREHOUSE_SERVICE_URL: http://project_b:8001/api/v1
+    WAREHOUSE_AUTH_URL: http://project_b:8001/api/token/
+    WAREHOUSE_SERVICE_USER: ${WAREHOUSE_SERVICE_USER}
+    WAREHOUSE_SERVICE_PASSWORD: ${WAREHOUSE_SERVICE_PASSWORD}
+
+x-b-env: &b-env
+  env_file: ./project_b/.env
+  environment: &b-vars
+    DJANGO_SETTINGS_MODULE: warehouse.settings.development
+    DATABASE_URL: postgres://postgres:postgres@db_b:5432/warehouse_b
+    REDIS_URL: redis://redis:6379
+    ALLOWED_HOSTS: localhost,127.0.0.1,project_b
+    WAREHOUSE_SERVICE_USER: ${WAREHOUSE_SERVICE_USER}
+    WAREHOUSE_SERVICE_PASSWORD: ${WAREHOUSE_SERVICE_PASSWORD}
+
+services:
+  db_a:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: bookstore_a
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes: [pg_a:/var/lib/postgresql/data]
+    healthcheck: &hc
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      retries: 10
+
+  db_b:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: warehouse_b
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes: [pg_b:/var/lib/postgresql/data]
+    healthcheck: *hc
+
+  redis:
+    image: redis:alpine
+
+  project_b:
+    build: ./project_b
+    <<: *b-env
+    environment:
+      <<: *b-vars
+      RUN_MIGRATIONS: '1'
+    volumes: [static_b:/app/staticfiles]
+    depends_on:
+      db_b: {condition: service_healthy}
+      redis: {condition: service_started}
+
+  celery_b:
+    build: ./project_b
+    <<: *b-env
+    command: celery -A warehouse worker -l info
+    depends_on: [project_b]
+
+  celery_beat_b:
+    build: ./project_b
+    <<: *b-env
+    command: celery -A warehouse beat -l info
+    depends_on: [project_b]
+
+  project_a:
+    build: ./project_a
+    <<: *a-env
+    environment:
+      <<: *a-vars
+      RUN_MIGRATIONS: '1'
+    volumes: [static_a:/app/staticfiles]
+    depends_on:
+      db_a: {condition: service_healthy}
+      project_b: {condition: service_started}
+
+  celery_a:
+    build: ./project_a
+    <<: *a-env
+    command: celery -A DjangoBookStore worker -l info
+    depends_on: [project_a]
+
+  celery_beat_a:
+    build: ./project_a
+    <<: *a-env
+    command: celery -A DjangoBookStore beat -l info
+    depends_on: [project_a]
+
+  nginx:
+    image: nginx:alpine
+    ports: ['8080:80', '8081:8081']
+    volumes:
+      - ./project_a/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_a:/app/staticfiles:ro
+      - static_b:/app_b/staticfiles:ro
+    depends_on: [project_a, project_b]
+
+volumes:
+  pg_a:
+  pg_b:
+  static_a:
+  static_b:

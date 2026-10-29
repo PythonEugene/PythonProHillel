@@ -1,0 +1,10 @@
+{% extends "books/base.html" %}
+{% block content %}
+{% load i18n %}
+
+<h2>{% translate "Thank you for your order" %}</h2>
+<p>{% translate "Order number:" %} #{{ order.id }}</p>
+<p>{% translate "Status:" %} {{ order.get_status_display }}</p>
+<p>{% translate "Amount" %} {{ order.total_price }} $</p>
+<a href="{% url 'books:list' %}">{% translate "Back to catalog" %}</a>
+{% endblock %}

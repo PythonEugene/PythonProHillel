@@ -1,0 +1,12 @@
+.git
+.venv
+.idea
+**/__pycache__
+*.pyc
+.env
+db.sqlite3
+staticfiles
+reports
+htmlcov
+.coverage
+coverage.xml
